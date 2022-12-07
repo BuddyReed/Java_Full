@@ -9,6 +9,7 @@ class BSTNode {
     }
 }
 
+// This means the Binary Tree not the Node
 class BinarySearchTree {
     constructor() {
         this.root = null;
@@ -81,7 +82,69 @@ class BinarySearchTree {
 
         this.print(node.left, spaceCnt);
     }
+
+
+
+    // ------------------- TUESDAY --------------------------//
+    /**
+     * Determines if this tree contains the given searchVal.
+     * - Time: O(?).
+     * - Space: O(?).
+     * @param {number} searchVal The number to search for in the node's data.
+     * @returns {boolean} Indicates if the searchVal was found.
+     */
+    contains(searchVal) { 
+        // BST IS EMPTY
+        if(this.isEmpty()){
+            return false;
+        }  
+        // BST IS NOT EMPTY
+        // SET RUNNER AT ROOT
+        let runner = this.root
+        // while loop
+        // This keeps runner, running...
+        while(runner !== null){
+            // searchVal is EQUAL to runner data
+            if(runner.data === searchVal){
+                return true;
+            }
+            // searchVal is LESS THAN to runner data
+            if(searchVal < runner.data){
+                runner = runner.left
+            }
+            // searchVal is GREATER THAN to runner data
+            else{
+                runner = runner.right 
+            }
+        }
+        return false;
+        
+    }
+
+    /**
+     * Determines if this tree contains the given searchVal.
+     * - Time: O(?).
+     * - Space: O(?).
+     * @param {number} searchVal The number to search for in the node's data.
+     * @returns {boolean} Indicates if the searchVal was found.
+     */
+    containsRecursive(searchVal, current = this.root) { }
+
+    /**
+     * Calculates the range (max - min) from the given startNode.
+     * - Time: O(?).
+     * - Space: O(?).
+     * @param {Node} startNode The node to start from to calculate the range.
+     * @returns {number|null} The range of this tree or a sub tree depending on if the
+     *    startNode is the root or not.
+     */
+    range(startNode = this.root) { }
 }
+
+
+
+
+
 
 
 const emptyTree = new BinarySearchTree();
@@ -117,3 +180,6 @@ threeLevelTree.root.right.left = new BSTNode(13);
 
 console.log(threeLevelTree.min())
 threeLevelTree.print()
+
+console.log(threeLevelTree.contains(7))
+

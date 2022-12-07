@@ -9,7 +9,7 @@ public class MainContoller {
 	
 	@GetMapping("/")
 		public String index(
-		@RequestParam
+		@RequestParam ("count") int 
 		@RequestParam
 		@RequestParam
 		@RequestParam

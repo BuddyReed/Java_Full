@@ -83,8 +83,6 @@ class BinarySearchTree {
         this.print(node.left, spaceCnt);
     }
 
-
-
     // ------------------- TUESDAY --------------------------//
     /**
      * Determines if this tree contains the given searchVal.
@@ -99,7 +97,7 @@ class BinarySearchTree {
             return false;
         }  
         // BST IS NOT EMPTY
-        // SET RUNNER AT ROOT
+        // SET RUNNER AT ROOT | WE WILL REFERR TO THE FUNNER WHEN CALLING ON THE BTSNODE ATTRUIBUTES
         let runner = this.root
         // while loop
         // This keeps runner, running...

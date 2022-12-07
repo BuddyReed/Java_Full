@@ -30,8 +30,8 @@ public class Book {
     @NotNull
     @Size(min = 3, max = 40)
     private String language;
-    @NotNull
-    @Min(100)
+    @NotNull(message="Must not be blank")
+    @Min(value=100, message="Must be at lease 100 pages")
     private Integer numberOfPages;
     // This will not allow the createdAt column to be updated after creation
     @Column(updatable=false)
@@ -59,7 +59,9 @@ public class Book {
     protected void onUpdate(){
         this.updatedAt = new Date();
     }
-    
+	
+	
+    // getters and setters
     public Long getId() {
 		return id;
 	}

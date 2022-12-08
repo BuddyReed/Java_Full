@@ -118,7 +118,6 @@ class BinarySearchTree {
         return false;
         
     }
-
     /**
      * Determines if this tree contains the given searchVal.
      * - Time: O(?).
@@ -137,47 +136,131 @@ class BinarySearchTree {
      *    startNode is the root or not.
      */
     range(startNode = this.root) { }
+
+
+
+
+    // ------------------- WEDNESDAY --------------------------//
+    /**
+     * Inserts a new node with the given newVal in the right place to preserver
+     * the order of this tree.
+     * - Time: O(?).
+     * - Space: O(?).
+     * @param {number} newVal The data to be added to a new node.
+     * @returns {BinarySearchTree} This tree.
+     */
+    insert(newVal) { 
+        // CREATE A NEW BST NODE       
+        let newNode = new BSTNode(newVal)
+        // BST IS EMPTY
+        if(this.isEmpty()){
+        // POINT THE ROOT TO THE NEW BST NODE
+            this.root = newNode
+            // RETURN THIS
+            return this
+        }          
+        // BST IS NOT EMPTY
+        // SET THE RUNNER AT THE ROOT
+        let runner = this.root
+            // COMPARE THE newValue TO runner data
+        while(runner != null){
+            // This tells us where we need to put our new node
+            // CHECK TO SEE IF THE runner LEFT or RIGHT POINTS TO ANOTHER NODE
+            // IF LEFT or RIGHT points to NULL
+            if(newNode.data < runner.data && runner.left === null){
+                runner.left = newNode
+            }
+            if(newNode.data >= runner.data && runner.right === null){
+                runner.right = newNode
+            }
+            // POINT THE runner LEFT or RIGHT to the NEW BST NODE
+            if(newNode.data < runner.data){
+                runner = runner.left
+            }
+            if(newNode.data >= runner.data){
+                runner = runner.right
+            }
+        }
+        return this
+        
+    }
+
+    /**
+     * Inserts a new node with the given newVal in the right place to preserver
+     * the order of this tree.
+     * - Time: O(?).
+     * - Space: O(?).
+     * @param {number} newVal The data to be added to a new node.
+     * @param {Node} curr The node that is currently accessed from the tree as
+     *    the tree is being traversed.
+     * @returns {BinarySearchTree} This tree.
+     */
+    insertRecursive(newVal, curr = this.root) { }
 }
-
-
-
-
-
-
-
-const emptyTree = new BinarySearchTree();
-const oneNodeTree = new BinarySearchTree();
-oneNodeTree.root = new BSTNode(10);
-
-/* twoLevelTree
-        root
-        10
-      /   \
-    5     15
+    /* fullTree
+                    root
+                <-- 25 -->
+              /            \
+            15             50
+          /    \         /    \
+        10     22      35     70
+      /   \   /  \    /  \   /  \
+    4    12  18  24  31  44 66  90
 */
-const twoLevelTree = new BinarySearchTree();
-twoLevelTree.root = new BSTNode(10);
-twoLevelTree.root.left = new BSTNode(5);
-twoLevelTree.root.right = new BSTNode(15);
+const fullTree = new BinarySearchTree();
+fullTree
+.insert(25)
+.insert(15)
+.insert(10)
+.insert(22)
+.insert(4)
+.insert(12)
+.insert(18)
+.insert(24)
+.insert(50)
+.insert(35)
+.insert(70)
+.insert(31)
+.insert(44)
+.insert(66)
+.insert(90);
+fullTree.print();
 
-/* threeLevelTree 
-        root
-        10
-      /   \
-    5     15
-  / \    / \
-2   6  13  
-*/
-const threeLevelTree = new BinarySearchTree();
-threeLevelTree.root = new BSTNode(10);
-threeLevelTree.root.left = new BSTNode(5);
-threeLevelTree.root.left.left = new BSTNode(2);
-threeLevelTree.root.left.right = new BSTNode(6);
-threeLevelTree.root.right = new BSTNode(15);
-threeLevelTree.root.right.left = new BSTNode(13);
 
-console.log(threeLevelTree.min())
-threeLevelTree.print()
 
-console.log(threeLevelTree.contains(7))
+// const emptyTree = new BinarySearchTree();
+// const oneNodeTree = new BinarySearchTree();
+// oneNodeTree.root = new BSTNode(10);
+
+// /* twoLevelTree
+//         root
+//         10
+//       /   \
+//     5     15
+// */
+// const twoLevelTree = new BinarySearchTree();
+// twoLevelTree.root = new BSTNode(10);
+// twoLevelTree.root.left = new BSTNode(5);
+// twoLevelTree.root.right = new BSTNode(15);
+
+// /* threeLevelTree 
+//         root
+//         10
+//       /   \
+//     5     15
+//   / \    / \
+// 2   6  13  
+// */
+// const threeLevelTree = new BinarySearchTree();
+// threeLevelTree.root = new BSTNode(10);
+// threeLevelTree.root.left = new BSTNode(5);
+// threeLevelTree.root.left.left = new BSTNode(2);
+// threeLevelTree.root.left.right = new BSTNode(6);
+// threeLevelTree.root.right = new BSTNode(15);
+// threeLevelTree.root.right.left = new BSTNode(13);
+
+// console.log(threeLevelTree.min())
+// threeLevelTree.print()
+
+// console.log(threeLevelTree.contains(7))
 

@@ -1,4 +1,4 @@
-package com.buddy.mvc.models;
+package com.buddy.safetravels.models;
 
 import java.util.Date;
 
@@ -17,38 +17,44 @@ import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 @Entity
-@Table(name="books")
-public class Book {
+@Table(name="travels")
+public class Travel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+   
     @NotNull
     @Size(min = 5, max = 200)
-    private String title;
+    private String expense;
+    
     @NotNull
     @Size(min = 5, max = 200)
-    private String description;
+    private String description; 
     @NotNull
     @Size(min = 3, max = 40)
-    private String language;
+    private String vendor;
+   
     @NotNull(message="Must not be blank")
-    @Min(value=100, message="Must be at lease 100 pages")
-    @Max(500)
-    private Integer numberOfPages;
+//    @Min(value=100, message="Must be at lease 100 pages")
+//    @Max(500)
+    private Double amount;
+    
     // This will not allow the createdAt column to be updated after creation
     @Column(updatable=false)
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date createdAt;
+    
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date updatedAt;
     
-    public Book() {
+   // Contructors 
+    public Travel() {
     }
-    public Book(String title, String desc, String lang, int pages) {
-        this.title = title;
+    public Travel(String expense, String desc, String vendor, Double amount) {
+        this.expense = expense;
         this.description = desc;
-        this.language = lang;
-        this.numberOfPages = pages;
+        this.vendor = vendor;
+        this.amount = amount;
     }
     
     // other getters and setters removed for brevity
@@ -60,21 +66,22 @@ public class Book {
 	@PreUpdate
     protected void onUpdate(){
         this.updatedAt = new Date();
+        
+        
+        // getters and setters    
+        
     }
-	
-	
-    // getters and setters
-    public Long getId() {
+	public Long getId() {
 		return id;
 	}
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getTitle() {
-		return title;
+	public String getExpense() {
+		return expense;
 	}
-	public void setTitle(String title) {
-		this.title = title;
+	public void setExpense(String expense) {
+		this.expense = expense;
 	}
 	public String getDescription() {
 		return description;
@@ -82,17 +89,17 @@ public class Book {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public String getLanguage() {
-		return language;
+	public String getVendor() {
+		return vendor;
 	}
-	public void setLanguage(String language) {
-		this.language = language;
+	public void setVendor(String vendor) {
+		this.vendor = vendor;
 	}
-	public Integer getNumberOfPages() {
-		return numberOfPages;
+	public Double getAmount() {
+		return amount;
 	}
-	public void setNumberOfPages(Integer numberOfPages) {
-		this.numberOfPages = numberOfPages;
+	public void setAmount(Double amount) {
+		this.amount = amount;
 	}
 	public Date getCreatedAt() {
 		return createdAt;
@@ -106,4 +113,8 @@ public class Book {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
+	
+	
+
+
 }

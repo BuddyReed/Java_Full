@@ -32,6 +32,7 @@ public class BookController {
 		return "show.jsp";
 	}
 	
+	// showing all books???
     @RequestMapping("/books")
     public String index(Model model) {
         List<Book> books = bookServ.allBooks();

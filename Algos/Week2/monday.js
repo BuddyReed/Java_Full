@@ -196,7 +196,42 @@ class BinarySearchTree {
      * @returns {BinarySearchTree} This tree.
      */
     insertRecursive(newVal, curr = this.root) { }
+
+
+    // ------------------- THRUSDAY --------------------------//
+    /**
+     * DFS Inorder: (Left, CurrNode, Right)
+     * Converts this BST into an array following Depth First Search inorder.
+     * See debugger call stack to help understand the recursion.
+     * Example on the fullTree var:
+     * [4, 10, 12, 15, 18, 22, 24, 25, 31, 35, 44, 50, 66, 70, 90]
+     * @param {Node} node The current node during the traversal of this tree.
+     * @param {Array<number>} vals The data that has been visited so far.
+     * @returns {Array<number>} The vals in DFS Preorder once all nodes visited.
+    */
+    toArrInorder(node = this.root, inOrder = []) { 
+        // BASS CASE
+        // FORWARD PROGRESS
+        // RECURSIVE CALL
+        if(node === null){
+            return inOrder;
+        }
+        this.toArrInOrder(node.left, inOrder)
+        inOrder.push(node.value);
+        this.toArrInOrder(node.right, inOrder)
+        
+        return inOrder;
+        // RECRUSIVE FUNCTION
+        // CHECK TO SEE IF NODE EXISTS
+            // RECURSIVE CALL TO LEFT SIDE
+            // PUSH THE NODE DATA INTO ARRAY
+            // RECURSIVE CALL TO RIGHT SIDE
+        // RETURN ARRAY OF NUMBERS
+        // CALL STACKING WHEN GOING DOWN RECUSSIVE
+    }
 }
+
+// Wednesday ------------------------------------------Thursday-----------
     /* fullTree
                     root
                 <-- 25 -->
@@ -207,6 +242,7 @@ class BinarySearchTree {
       /   \   /  \    /  \   /  \
     4    12  18  24  31  44 66  90
 */
+
 const fullTree = new BinarySearchTree();
 fullTree
 .insert(25)
@@ -224,7 +260,14 @@ fullTree
 .insert(44)
 .insert(66)
 .insert(90);
-fullTree.print();
+// fullTree.print();
+console.log(fullTree.toArrInOrder);
+
+
+
+
+
+
 
 
 

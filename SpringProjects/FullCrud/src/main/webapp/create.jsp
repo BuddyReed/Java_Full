@@ -13,10 +13,26 @@
 </head>
 <body>
 	<div class="container">
-		<h1><c:out value="${user.title}"/></h1>
-	
+		<h1>Create Recipe</h1>
+		<form:form method="POST" action="/recipes/new" modelAttribute="recipeObj">
+			<form:input type="hidden" path="creator" value="${user_id}" />
+			<p>
+				Name:
+				<form:input path="name" />
+				<form:errors path="name" />
+			</p>
+			<p>
+				Description:
+				<form:textarea path="description"/>
+				<form:errors path="description" />
+			</p>
+			<p>
+				Under 30 mins?
+				<form:checkbox path="under30Min"/>
+			</p>
+			<button>Create</button>
+		</form:form>
 	</div>
-
 <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 </body>

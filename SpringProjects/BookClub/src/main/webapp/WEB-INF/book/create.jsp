@@ -29,6 +29,7 @@
 			<form:form modelAttribute="bookObj" action="/book/new" method="POST">
 				<!-- <input type="hidden" name="_method" value="put"> -->
 				<!-- modelAttrivute matches @modelAttribute in @Getmapping BookController -->
+				<form:input type="hidden" path="creator" value="${user_id}" />
 				<div class="form-group">
 					<form:label path="title" class="form-label">Title:</form:label>
 					<form:errors path="title" class="text-danger" />
@@ -44,6 +45,8 @@
 					<form:errors path="description" class="text-danger" />
 					<form:textarea type="number" path="description" id="" class="form-control" />
 				</div>
+				
+				
 				<input type="submit" value="submit"/>
 				<!-- submit button doesn't need form tag -->
 				<!-- path names have to match member variables -->

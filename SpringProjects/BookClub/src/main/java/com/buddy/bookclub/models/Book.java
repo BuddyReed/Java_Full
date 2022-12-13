@@ -51,16 +51,16 @@ public class Book {
     
     
     public Book() {}
-    
-    
-    public Book(@NotNull @Size(min = 5, max = 200) String title, @NotNull @Size(min = 3, max = 40) String author,
-			@NotNull @Size(min = 5, max = 200) String description, User creator) {
+
+
+	public Book(@NotNull @Size(min = 5, max = 200) String title, @NotNull @Size(min = 3, max = 40) String author,
+			@NotNull @Size(min = 5, max = 200) String description) {
 		super();
 		this.title = title;
 		this.author = author;
 		this.description = description;
-		this.creator = creator;
 	}
+
 
 	// other getters and setters removed for brevity
     @PrePersist

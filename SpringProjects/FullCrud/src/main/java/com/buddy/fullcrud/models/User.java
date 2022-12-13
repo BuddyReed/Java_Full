@@ -1,15 +1,12 @@
-package com.buddy.bookclub.models;
+package com.buddy.fullcrud.models;
 
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
@@ -54,18 +51,12 @@ public class User {
     
     @DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date updatedAt;
-    
-    // Relationship establishing 
-    @OneToMany(mappedBy="creator", fetch = FetchType.LAZY)
-    private List<Book> books;
-    
   
     public User() {}
-
-   
+    
 	public User(
 			@NotEmpty(message = "First Name is required!") @Size(min = 3, max = 30, message = "Username must be between 3 and 30 characters") String firstName,
-			@NotEmpty(message = "Last Name is required!") @Size(min = 2, max = 30, message = "Username must be between 3 and 30 characters") String lastName,
+			@NotEmpty(message = "Last Name is required!") @Size(min = 3, max = 30, message = "Username must be between 3 and 30 characters") String lastName,
 			@NotEmpty(message = "Email is required!") @Email(message = "Please enter a valid email!") String email,
 			@NotEmpty(message = "Password is required!") @Size(min = 8, max = 128, message = "Password must be between 8 and 128 characters") String password,
 			@NotEmpty(message = "Confirm Password is required!") @Size(min = 8, max = 128, message = "Confirm Password must be between 8 and 128 characters") String confirm) {
@@ -151,14 +142,6 @@ public class User {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
-
-	public List<Book> getBooks() {
-		return books;
-	}
-
-	public void setBooks(List<Book> books) {
-		this.books = books;
-	}
-
+    
 
 }

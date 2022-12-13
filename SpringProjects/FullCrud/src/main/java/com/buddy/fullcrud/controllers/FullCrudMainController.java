@@ -15,7 +15,8 @@ import com.buddy.fullcrud.services.MainService;
 @Controller // THIS ANNOATIONS MUST BE ADDED AS THIS
 public class FullCrudMainController {
 
-	@Autowired
+	
+	@Autowired // THIS ANNOATIONS INSTANATE THE SERVICE INTO THE CONTROLLER
 	MainService mainServ;	
 	
 	// ---------------- CREATING A DOJO -----------------//
@@ -24,8 +25,15 @@ public class FullCrudMainController {
 	// THE SECOND ROUTE PROCESSES THE INFO YOU ARE COLLLECTIN.
 	@GetMapping(value={"/", "/dojo/new"})
 	public String createChef(
-		@ModelAttribute("dojoObj")Dojo emptyDojo
+		@ModelAttribute("dojoObj")Dojo emptyDojo // THIS CREATES A EMPTY OBJECT AND THE VARIABLE WITHIN THE PERTHENSIS SHOULD BE IN THE MODEL ATTRIBUTE ON THE FORM
+		HttpSession session 
 	) {
+		// THIS LOGIC BELOW MAKES USER HAVE TO BE LOGGED IN, IN ORED TO ACCESS THIS PAGE
+		// YOU WANT TO BE SURE TO ADD THIS LOGIC TO ANY ROUTE YOU DON'T WANT A USER TO NOT
+		// HAVE ACCESS TO WITHOUT BEING LOGGED IN. 
+		if(session.getAttribute("user_id") == null) {
+			return "redirect:/";
+		}
 		return "/dojo/create.jsp";
 	}
 	

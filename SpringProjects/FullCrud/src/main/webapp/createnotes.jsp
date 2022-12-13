@@ -12,10 +12,34 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 <body>
+
 	<div class="container">
-		<h1><c:out value="${user.title}"/></h1>
-	
+		<h1>Create Recipe</h1>
+		// THE MODELATTRIBUTE BELOW COMES FOR THE ROUTE WHERE YOU CREATE THE EMTPY AND FULL OBJECT
+		<form:form method="POST" action="/recipes/new" modelAttribute="recipeObj">
+			// LINE BELOW CONNECTS THE USER TO THE MANY OBJECT YOU ARE CREATING. 
+			// IN THIS CASE A RECIPE. THE PATH IS SET TO THE CREATOR BECAUSE IT IS DEFINED IN THE
+			// MANY MODEL OF THE MEMBER VARIABLE THAT CONNECTS THE USER. THE VALE IS USER_ID BECAUSE YOU 
+			// STORE THE USER ID UNDER THAT VARIABLE IN THE USER CONTROLLER WHEN YOU GETTHEID (CALIING THE ID)
+			<form:input type="hidden" path="creator" value="${user_id}" /> 
+			<p>
+				Name:
+				<form:input path="name" />
+				<form:errors path="name" />
+			</p>
+			<p>
+				Description:
+				<form:textarea path="description"/>
+				<form:errors path="description" />
+			</p>
+			<p>
+				Under 30 mins?
+				<form:checkbox path="under30Min"/>
+			</p>
+			<button>Create</button>
+		</form:form>
 	</div>
+
 
 <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>

@@ -68,6 +68,44 @@ class MinHeap {
                 // SET STARTINDEX TO PARENT INDEX
             // PARENT VALUE < CHILD VALUE
                 // INSERT LOGIC IS DONE
+/**
+  * Extracts the min num from the heap and then re-orders the heap to
+  * maintain order so the next min is ready to be extracted.
+  * 1. Save the first node to a temp var.
+  * 2. Pop last node off and overwrite idx1 with it.
+  * 3. Iteratively swap the old last node that is now at idx1 with it's
+  *    smallest child IF the smallest child is smaller than it.
+  * - Time: O(log n) logarithmic due to shiftDown.
+  * - Space: O(1) constant.
+  * @returns {?number} The min number or null if empty.
+  */
+extract() {
+    // SWAP FIRST AND LAST ELEMENT
+    // POP LAST ELEMENT AND STORE INSIDE VARIABLE
+
+    let parentIdx = 1;
+    let leftChildIdx = parentIdx * 2
+    // START SHIFT DOWN LOGIC
+    while(leftChildIdx < this.heap.length){
+      // IS THERE A RIGHT CHILD??
+      // CHECK TO SEE IF RIGHT CHILD INDEX EXISTS
+      // IF BOTH LEFT AND RIGHT CHILD EXISTS
+        // COMPARE THE CHILDREN VALUES, FIND THE LESSER VALUE
+        // COMPARE AGAINST PARENT VALUE AND SWAP IF NECESSARY
+      // IF ONLY THE LEFT CHILD EXISTS
+        // COMPARE AGAINST PARENT VALUE AND SWAP IF NECESSARY
+    }
+    // RETURN THE MIN VARIABLE
+}
+
+
+
+
+
+
+
+
+
     /**
      * Logs the tree horizontally with the root on the left and the index in
      * parenthesis using reverse inorder traversal.

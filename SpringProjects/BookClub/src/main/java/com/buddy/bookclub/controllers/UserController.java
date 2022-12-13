@@ -114,20 +114,23 @@ public class UserController {
 		// VALIDATIONS PASS
 		bookServ.createBook(filledBook);
 		return "redirect:/books";
+		
+		// THE CREATE METHOD RETURNS A NEW BOOK (OR WHATEVER YOU ARE COLLECT) YOU CAN THEN REDIRECT TO A SHOW PAGE USING
+		// 
 	}
 	
 	
-	// BOOK READ ONE BOOK
+	// BOOK READ ONE BOOK .... TIS USED TO GRAB ALL THE BOOKS
 	
-//	@GetMapping(value="/money/${id}")
-//	public String showOneBook(
-//		@PathVariable("id") Long userId,
-//		Model model 
-//	) {
-//		User oneUser = userServ.getOneUser(userId);
-//		model.addAttribute("user", oneUser);		
-//		return "/book/show.jsp";
-//	}
+	@GetMapping("/books/{id}")
+	public String showOneBook(
+		@PathVariable("id") Long Id,
+		Model model 
+	) {
+		Book oneBook = bookServ.getOneBook(Id);
+		model.addAttribute("user", oneBook);		
+		return "/book/show.jsp";
+	}
 	
 	
 	

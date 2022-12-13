@@ -60,6 +60,9 @@ public class FullCrud {
 	    @DateTimeFormat(pattern="yyyy-MM-dd")
 	    private Date dob;
 	    
+	    @NotNull // ThIS ALLOWS YOU TO HAVE A CHOICE ON YOU JSP FOR YES OR NO
+	    private boolean under30Min;
+	    
 	    @Column(updatable=false) // THE @COLUMN FALSE WILL NOT LET THE CREATEAT TO BE UPDATED
 	    @DateTimeFormat(pattern="yyyy-MM-dd")
 	    private Date createdAt;
@@ -82,6 +85,7 @@ public class FullCrud {
 	    // THIS GOES ON THE MANY SIDE OF THE ONE TO MANY
 	    @ManyToOne(fetch = FetchType.LAZY)
 	    @JoinColumn(name="dojo_id") // THIS IS THE FOREIGN KEY ON THE MANY TABLE(NEED TO BE SINGULAR
+	    // THIS ALSO REPRESENTS THE ONE FROM THE ONE TO MANY RELATIONSHIP. 
 	    private Dojo creator; // THE MEMBER VARIABLE (CREATOR) NEEDS TO MATCH THE MAPPEDBY..
 	    
 // RELATIONSHIP________________________________RELATIONSHIP	    

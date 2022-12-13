@@ -66,6 +66,8 @@ public class UserController {
 		return "redirect:/homepage";
 	}
 	
+	// THIS ROUTE ALLOWS YOU TO DISPLAY USERS NAME AS WELL.
+	
 	@GetMapping("/homepage")
 	public String homepage(
 		HttpSession session,

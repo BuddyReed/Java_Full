@@ -11,7 +11,5 @@ public interface FullCrudRepository extends CrudRepository<FullCrud, Long> {
 	List<FrullCrud> findAll();
 	
 	
-	
-	
 
 }

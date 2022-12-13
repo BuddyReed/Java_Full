@@ -20,7 +20,7 @@ public class NinjaController {
 	MainService mainServ;	
 
 	
-	// ---------------- CREATING A DISH -----------------//
+	// ---------------- CREATING A Ninja -----------------//
 	@GetMapping("/ninja/new")
 	public String createNinja(
 		@ModelAttribute("ninjaObj") Ninja emptyNinjaObj,

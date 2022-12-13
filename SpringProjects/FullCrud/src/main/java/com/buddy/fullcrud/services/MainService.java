@@ -11,7 +11,7 @@ import com.buddy.dojoninja.repositories.NinjaRepository;
 
 public class MainService {
 	// DEPENDENCY INJECT THE REPOSITORY FROM (JUST CHANGE OUT NAME DOJO (ONE) NINJAS (MANY)
-	@Autowired
+	@Autowired 
 	DojoRepository dojoRepo;
 	
 	@Autowired

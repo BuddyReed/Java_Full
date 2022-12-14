@@ -13,43 +13,24 @@
 </head>
 <body>
 
-
- OPTION 1 (FOR LOOP)
 	<div class="container">
-		<h1>Dashboard for Recipes</h1>
-		<table class="table table-dark">
-			<thead>
-				<tr>
-					<th>Name</th>
-					<th>Under</th>
-					<th>Posted By</th>
-					<th>Action</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach var="recipe" items="${allRecipes}">
-					<tr>
-						<td><c:out value="${recipe.name}" /></td>
-						<td><c:out value="${recipe.under30Min}" /></td>
-						<td><c:out value="${recipe.creator.userName}" /></td>
-						<td>
-							<a href="/recipes/${recipe.id}">View</a>
-							<c:if test="${user_id == recipe.creator.id }">
-								<a href="/recipes/${recipe.id}/edit">Edit</a>
-								<a href="/recipes/${recipe.id}/delete">Delete</a>							
-							</c:if>
-							<form action="/recipes/${recipe.id}" method="POST">
-								<input type="hidden" name="_method" value="DELETE" />
-								<button>Delete</button>
-							</form>
-						</td>
-					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
+		<h1><c:out value="${oneRecipe.name }" /></h1>
+		<h2>Created By: <c:out value="${oneRecipe.creator.userName }" /></h2>
+		<h2>
+			Under 30 Minutes? 
+			This allowed you to work with a boolean since the "Under 30"
+			what a yes or no question. This shows Yes or No instead of
+			True or False
+			<c:choose>
+				<c:when test="${oneRecipe.under30Min}">
+					Yes
+				</c:when>
+				<c:otherwise>
+					No
+				</c:otherwise>
+			</c:choose>
+		</h2>
 	</div>
-	
-
 
 <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>

@@ -39,6 +39,40 @@
 			<button>Create</button>
 		</form:form>
 	</div>
+	
+	
+	// OPTION 2
+
+	<div class="container">	
+			<p class="text-danger"> Author Must Not Be Blank </p>
+			<form:form modelAttribute="bookObj" action="/book/new" method="POST">
+				<!-- <input type="hidden" name="_method" value="put"> -->
+				<!-- modelAttrivute matches @modelAttribute in @Getmapping BookController -->
+				<form:input type="hidden" path="creator" value="${user_id}" />
+				<div class="form-group">
+					<form:label path="title" class="form-label">Title:</form:label>
+					<form:errors path="title" class="text-danger" />
+					<form:input path="title" id="" class="form-control"/>
+				</div>
+				<div class="form-group">
+					<form:label path="Author" class="form-label">Author:</form:label>
+					<form:errors path="Author" class="text-danger" />
+					<form:input path="Author" id="" class="form-control" />
+				</div>
+				<div class="form-group">
+					<form:label path="description" class="form-label">My Thoughts:</form:label>
+					<form:errors path="description" class="text-danger" />
+					<form:textarea type="number" path="description" id="" class="form-control" />
+				</div>
+				
+				
+				<input type="submit" value="submit"/>
+				<!-- submit button doesn't need form tag -->
+				<!-- path names have to match member variables -->
+			</form:form>
+	</div>	
+
+
 
 
 <!-- JavaScript Bundle with Popper -->

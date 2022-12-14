@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 
 import com.buddy.bookclub.models.Book;
 import com.buddy.bookclub.models.LoginUser;
@@ -98,8 +99,11 @@ public class UserController {
 	
 	@GetMapping("/book/new")
 	public String create(
-		@ModelAttribute("bookObj") Book emptyBookObj
+		@ModelAttribute("bookObj") Book emptyBookObj, HttpSession session
 	) {
+		 if(session.getAttribute("user_id") == null) {
+				return "redirect:/books";
+			}
 		return "/book/create.jsp";
 	}
 	
@@ -125,15 +129,57 @@ public class UserController {
 	@GetMapping("/books/{id}")
 	public String showOneBook(
 		@PathVariable("id") Long Id,
-		Model model 
+		Model model, HttpSession session 
 	) {
+		 if(session.getAttribute("user_id") == null) {
+				return "redirect:/books";
+			}
 		Book oneBook = bookServ.getOneBook(Id);
-		model.addAttribute("user", oneBook);		
+		model.addAttribute("book", oneBook);		
 		return "/book/show.jsp";
 	}
 	
 	
+	// Delete THIS IS ON THE READ ONE BOOK
 	
+	 @GetMapping("/book/{id}/delete")
+	 public String deleteBook(@PathVariable("id") Long bookId		 
+	){
+		 
+		 bookServ.deleteBook(bookId);
+		 return "redirect:/books";	 
+	 }
+	 
+	 //  UPATE ______This route allows you to edit a book. (The Many)
+	
+		@GetMapping("/books/{id}/edit")
+		public String edit(
+			@PathVariable("id") Long id,
+			Model model, HttpSession session
+		) {
+			 if(session.getAttribute("user_id") == null) {
+					return "redirect:/books";
+				}
+			model.addAttribute("bookObj", bookServ.getOneBook(id));
+			return "/book/edit.jsp";
+		}	
+		
+		@PutMapping("/books/{id}/edit")
+		public String update(
+			@Valid @ModelAttribute("bookObj") Book filledBook,
+			BindingResult results
+		) {
+			if(results.hasErrors()) {
+				return "/book/edit.jsp";
+			}
+			bookServ.createBook(filledBook);
+			return "redirect:/books";
+		}
+		// ---------- UPDATE --------------//
+
+	
+	
+	// READ ALLL WITH USER NAME
 	
 	// This displays all (READ ALL) books and the user who is signed in...
 	@GetMapping("/books")
@@ -145,6 +191,7 @@ public class UserController {
 			return "redirect:/";
 		}
 		// THIS ALLOW USE TO SHOW THE USER NAME ON THE PAGE
+		model.addAttribute("oneUser", userServ.getOneUser(userId));
 		model.addAttribute("allBooks", bookServ.getAllBooks());
 		return "/book/dashboard.jsp";
 	}

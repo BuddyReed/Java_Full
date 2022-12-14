@@ -12,42 +12,21 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 <body>
-
-THIS WILL ALSO BE USED FOR THE UPDATE/EDIT AS WELL.
-
-OPTION 1
-
-// BE SURE TO CHANGE ALL THE PATH AND ERRORS
-	<div class="container">
-		<h1>Create Recipe</h1>
-		<form:form method="POST" action="/recipes/new" modelAttribute="recipeObj">
-			<form:input type="hidden" path="creator" value="${user_id}" />
-			<p>
-				Name:
-				<form:input path="name" />
-				<form:errors path="name" />
-			</p>
-			<p>
-				Description:
-				<form:textarea path="description"/>
-				<form:errors path="description" />
-			</p>
-			<p>
-				Under 30 mins?
-				<form:checkbox path="under30Min"/>
-			</p>
-			<button>Create</button>
-		</form:form>
+		<div class="container p-4">
+		<div class="row">
+			<div class=col>
+				<h1> Change Your Entry</h1>
+			</div>
+			<div class="col">			
+				<a href="/books"> back to the shelves</a>
+			</div>
+		</div >
 	</div>
 	
-OPTION 2
-
-
-
 	<div class="container">	
 			<p class="text-danger"> Author Must Not Be Blank </p>
-			<form:form modelAttribute="bookObj" action="/book/new" method="POST">
-				<!-- <input type="hidden" name="_method" value="put"> -->
+			<form:form modelAttribute="bookObj" action="/books/${bookObj.id}/edit" method="POST">
+				<input type="hidden" name="_method" value="put">
 				<!-- modelAttrivute matches @modelAttribute in @Getmapping BookController -->
 				<form:input type="hidden" path="creator" value="${user_id}" />
 				<div class="form-group">
@@ -71,13 +50,10 @@ OPTION 2
 				<!-- submit button doesn't need form tag -->
 				<!-- path names have to match member variables -->
 			</form:form>
-	</div>	
+	</div>
+	
 
-	
-	
-	
-	
-	
+
 <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 </body>

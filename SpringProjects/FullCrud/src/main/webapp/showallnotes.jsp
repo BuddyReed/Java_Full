@@ -36,7 +36,7 @@
 							<a href="/recipes/${recipe.id}">View</a>
 							// THIS IF STATEMENT BELOW ONLY ALLOWS THE CREATOR OR THE RECIPE (OR MANY ITEM)
 							// TO EDIT OR DELETE IF THEY ARE LOGGED IN IF NOT THEY WONT BE ABLE TO BE SELECTED.
-							// REFERENCE 9:25 ON VIDEO
+							// REFERENCE 9:25 ON READ ALL VIEDO
 							<c:if test="${user_id == recipe.creator.id }">
 								<a href="/recipes/${recipe.id}/edit">Edit</a>
 								<a href="/recipes/${recipe.id}/delete">Delete</a>							

@@ -1,12 +1,15 @@
 package com.buddy.beltexam.models;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
@@ -51,7 +54,16 @@ public class User {
     
     @DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date updatedAt;
+    
+    
+    
+ //RELATIONSHIP SET UP AND RECREATE GETTERS AND SETTERS
+ 
+    @OneToMany(mappedBy="creator", fetch = FetchType.LAZY)
+    private List<Baby> Babys;
+    
   
+    
     public User() {}
     
 	public User(
@@ -142,6 +154,17 @@ public class User {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
+
+	public List<Baby> getBabys() {
+		return Babys;
+	}
+
+	public void setBabys(List<Baby> babys) {
+		Babys = babys;
+	}
+
+
+    
     
 
 }

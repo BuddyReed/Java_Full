@@ -13,71 +13,47 @@
 </head>
 <body>
 
-THIS WILL ALSO BE USED FOR THE UPDATE/EDIT AS WELL.
-
-OPTION 1
-
-// BE SURE TO CHANGE ALL THE PATH AND ERRORS
 	<div class="container">
-		<h1>Create Recipe</h1>
-		<form:form method="POST" action="/recipes/new" modelAttribute="recipeObj">
-			<form:input type="hidden" path="creator" value="${user_id}" />
-			<p>
-				Name:
-				<form:input path="name" />
-				<form:errors path="name" />
-			</p>
-			<p>
-				Description:
-				<form:textarea path="description"/>
-				<form:errors path="description" />
-			</p>
-			<p>
-				Under 30 mins?
-				<form:checkbox path="under30Min"/>
-			</p>
-			<button>Create</button>
-		</form:form>
+		<h1> Add a name!</h1>
+		<a href="/babys">Back to Baby Names</a>
 	</div>
 	
-OPTION 2
-
-
-
-	<div class="container">	
-			<p class="text-danger"> Author Must Not Be Blank </p>
-			<form:form modelAttribute="bookObj" action="/book/new" method="POST">
+		<div class="container">	
+			<form:form modelAttribute="babyObj" action="/babys/new" method="POST">
 				<!-- <input type="hidden" name="_method" value="put"> -->
 				<!-- modelAttrivute matches @modelAttribute in @Getmapping BookController -->
 				<form:input type="hidden" path="creator" value="${user_id}" />
 				<div class="form-group">
-					<form:label path="title" class="form-label">Title:</form:label>
-					<form:errors path="title" class="text-danger" />
-					<form:input path="title" id="" class="form-control"/>
+					<form:label path="name" class="form-label">name:</form:label>
+					<form:errors path="name" class="text-danger" />
+					<form:input path="name" id="" class="form-control"/>
 				</div>
+				<form:select path="gender">
+						<form:option value="Male">Male</form:option>
+						<form:option value="Female">Female</form:option>
+						<form:option value="Neutral">Neutral</form:option>	
+				</form:select>
+				
 				<div class="form-group">
-					<form:label path="Author" class="form-label">Author:</form:label>
-					<form:errors path="Author" class="text-danger" />
-					<form:input path="Author" id="" class="form-control" />
+					<form:label path="orgin" class="form-label">orgin:</form:label>
+					<form:errors path="orgin" class="text-danger" />
+					<form:input path="orgin" id="" class="form-control" />
 				</div>
+				<p class="text-danger"> Meaning is required </p>
 				<div class="form-group">
 					<form:label path="description" class="form-label">My Thoughts:</form:label>
 					<form:errors path="description" class="text-danger" />
 					<form:textarea type="number" path="description" id="" class="form-control" />
 				</div>
 				
-				
+				<a class="btn btn-dark" href="/babys">Cancel</a>
 				<input type="submit" value="submit"/>
 				<!-- submit button doesn't need form tag -->
 				<!-- path names have to match member variables -->
 			</form:form>
 	</div>	
+	
 
-	
-	
-	
-	
-	
 <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 </body>

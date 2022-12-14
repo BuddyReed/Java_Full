@@ -13,48 +13,48 @@
 </head>
 <body>
 
-	<div class="container">	
-		<div class="row">
-			<div class="col">
-				<h1>Welcome, <c:out value="${oneUser.firstName}"/> </h1>
-				<h5>Books from everyone's shelves:</h5>
-			</div>
-			<div class="col">
-				<h5>				
-				<a href="/logout">logout</a>
-				</h5>
-				<h5>
-				<a href="/book/new">+ Add to my shelf </a>
-				</h5>
-			</div>
-		</div>
+	<div class="container">
+		<h1><c:out value="${oneRecipe.name }" /></h1>
+		<h2>Created By: <c:out value="${oneRecipe.creator.userName }" /></h2>
+		<h2>
+			Under 30 Minutes? 
+			<c:choose>
+				<c:when test="${oneRecipe.under30Min}">
+					Yes
+				</c:when>
+				<c:otherwise>
+					No
+				</c:otherwise>
+			</c:choose>
+		</h2>
 	</div>
-			
+	
+	
+	OPTION 2 THIS PAGE JUST SHOWS THE ITEM UNABLE TO EDIT ARE DO ANYTHING
 		<div class="container">
-		<table class="table table-dark">
-			<thead>
-				<th>ID</th>
-				<th>Title</th>
-				<th>Author Name</th>
-				<th>Posted By</th>
-			</thead>
-			<tbody>
-				<c:forEach var="book" items="${allBooks}">
-					<tr>
-						<td><c:out value="${book.id}" /></td>
-						<td><a href="/books/${book.id}"><c:out value="${book.title}" /></a>
-						</td>
-						
-						<td><c:out value="${book.author}" /></td>
-						<td><c:out value="${book.creator.firstName}" />
-						<c:out value="${book.creator.lastName}" />
-						</td>
-					</tr>
-				</c:forEach>
-			</tbody>
-		</table>
-	</div>
+	
+		<h1>Expense Details
+		</h1>
+			<a href="/expense">Go Back</a>
+		<h5>
+			Expenses Name:
+			<c:out value=" ${travel.expense}"/>
+		</h5>
+		<h5>
+			Vendor:
+			<c:out value="${travel.vendor}"/>
+		</h5>
+		<h5>
+			Amount:
+			<c:out value="${travel.amount}"/>
+		</h5>
+		<h5>
+			Description:
+			<c:out value="${travel.description}"/>
+		</h5>
 		
+	</div>
+	
 
 <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>

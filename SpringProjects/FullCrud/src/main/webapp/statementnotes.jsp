@@ -12,24 +12,20 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 <body>
-	<div class="container">
-	
-		<div class="row">
-			<div class="col">		
-				<h1><c:out value="${book.title}"/></h1>
-			</div>
-			<div class="col">
-				<a href="/books"> back to the shelves</a>
-			</div>	
-		</div>
-	</div>
 
-	<div class="container">	
-		<div>
-			<p>
-		<!-- 	// THIS CODE ALLOW YOU TO SHOW A USER WHO IS LOGGED IN ONE THING COMPARED TO IF THEY'RE NOT LOGGED IN -->
+C:OUT
+	Shows one item at a time
+			<c:out value="${book.description}"/>
+
+
+CHOOSE STATEMENT
+				// THIS CODE ALLOW YOU TO SHOW A USER WHO IS 
+				LOGGED IN ONE THING COMPARED TO IF THEY'RE NOT LOGGED IN
 			<c:choose>
-				<c:when test = "${user_id == book.creator.id }">
+			The userid is compared to the creator of the book. 
+			If the user created the book (many) then the will see the first
+			logic if not then will see the OTHERWISE logic...
+				<c:when test = "${user_id == book.creator.id }"> 
 					You read <c:out value="${book.title}"/>
 					by <c:out value="${book.author}"/>	
 					<p> Here are your thoughts </p>
@@ -42,25 +38,19 @@
 					<p>Here are <c:out value="${book.creator.firstName}"/>'s thoughts</p>
 	            </c:otherwise>
 			</c:choose>
-						
-			</p>
-		</div>
-<%-- 		<div>
-			<p>
-				Here are <c:out value="${book.creator.firstName}"/>'s Thoughts
-			</p>
-		</div> --%>
-		<div>
-			<p>
-				<c:out value="${book.description}"/>
-			</p>
-		</div>
+			
+			
+			
+			
+			
+IF STATEMENT
+		This statement blocks users who are not logged in from edit or delete items 
+		they did create. 
 		<c:if test="${user_id == book.creator.id }">
 			<a class="btn btn-dark" href="/books/${book.id}/edit">Edit</a>
 			<a class="btn btn-dark" href="/book/${book.id}/delete ">Delete</a>
 		</c:if>
-		
-	</div>
+					
 
 
 <!-- JavaScript Bundle with Popper -->

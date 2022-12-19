@@ -42,6 +42,16 @@ body {
 	margin-top: 150px;
 }
 
+
+
+/* ABOUT */
+
+.about{
+	width: 300px;
+	max-width: 100%;
+	height: auto;
+}
+
 /* CARDS */
 .wrapper {
     display: table;

@@ -31,7 +31,7 @@
 		   <div class="navbar-edit ">	
 		 <!--   NAV BAR LOGO   -->
 		    <a class="navbar-brand" href="#">
-		    	<img  class="img-fluid" src="/img/white_logo.png" width="80px" height="100px" />
+		    	<img  class="img-fluid" src="/img/lifelogo.png" width="80px" height="100px" />
 		    </a>
 		  </div>
 		    <button class="navbar-toggler me-5" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
@@ -48,7 +48,10 @@
 		            	<a class="nav-link active text-dark" aria-current="page" href="/">Home</a>
 		          </li>
 		          <li class="nav-item">
-		           		<a class="nav-link text-dark" href="/alltask">All Task</a>
+		           		<a class="nav-link text-dark" href="/alltask">Life Task</a>
+		          </li>
+		          <li class="nav-item">
+		           		<a class="nav-link text-dark" href="/dashboard">Dashboard</a>
 		          </li>
 				  <li class="nav-item">
 		            	<a class="nav-link text-dark" href="/signup">Sign Up</a>
@@ -56,9 +59,11 @@
 		          <li class="nav-item">
 		            	<a class="nav-link text-dark" href="/signin">Sign In</a>
 		          </li>
-		          <li class="nav-item">
-		            	<a class="nav-link text-dark" href="/logout">Logout</a>
-		          </li>
+			      <li class="nav-item">
+				            <a class="nav-link text-dark" href="/logout">Logout</a>
+			          <c:if test="${user_id == null}">
+					  </c:if>			     
+			      </li>
 		        </ul>
 		      </div>
 		    </div>
@@ -81,6 +86,37 @@
 
 
 
+<!-- ABOUT -->
+
+<section>
+	<div class="container">
+		<div class="card">
+ 			 <div class="card-body">
+				<div class="row d-flex justify-content-center align-items-center ms-4">
+				
+					<div class="col-lg-6 col-sm-12 ">
+						<h3 class="">About LifeTrak:</h3>
+						<p>
+							LifeTrak was start to help indivaul stay on track to finsih their life desirers. 
+							LifeTrak was start to help indivaul stay on track to finsih their life desirers. 
+							LifeTrak was start to help indivaul stay on track to finsih their life desirers. 
+ 							
+						
+						</p>
+					</div>
+					
+					<div class="col-lg-6 col-sm-12 text-center">
+						<img src="/img/aboutphoto.png" class="img-fluid about"  alt="...">
+					</div>
+				
+				</div>
+ 			 </div>
+		</div>
+	
+	</div>
+</section>
+
+
 
 
 
@@ -89,12 +125,12 @@
         <div class="container-fostrap">
             <div class="content">
                 <div class="container">
-                    <div class="row">
+                    <div class="row align-items-stretch">
                         <!-- CARD 1 -->
                         <div class="col-xs-12 col-sm-4">
                             <div class="card">
                                 <a class="img-card" href="/signup">
-                                    <img src="/img/homesign.png" />
+                                    <img class="" src="/img/homesign.png" />
                                 </a>
                                 <div class="card-content text-center">
                                     <h4 class="card-title">
@@ -228,8 +264,6 @@
 	  <!-- Copyright -->
 	</footer>
 </section>
-
-
 
 <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>

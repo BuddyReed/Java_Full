@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>LifeTrak</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <!-- NEW LINKS -->
 <link href = "https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel = "stylesheet">  
@@ -45,13 +45,19 @@
 		      <div class="offcanvas-body">
 		        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
 		          <li class="nav-item">
-		            <a class="nav-link active text-dark" aria-current="page" href="/">Home</a>
+		            	<a class="nav-link active text-dark" aria-current="page" href="/">Home</a>
 		          </li>
 		          <li class="nav-item">
-		            <a class="nav-link text-dark" href="/alltask">All Task</a>
+		           		<a class="nav-link text-dark" href="/alltask">All Task</a>
 		          </li>
 				  <li class="nav-item">
-		            <a class="nav-link text-dark" href="/signup">Login</a>
+		            	<a class="nav-link text-dark" href="/signup">Sign Up</a>
+		          </li>
+		          <li class="nav-item">
+		            	<a class="nav-link text-dark" href="/signin">Sign In</a>
+		          </li>
+		          <li class="nav-item">
+		            	<a class="nav-link text-dark" href="/logout">Logout</a>
 		          </li>
 		        </ul>
 		      </div>
@@ -77,6 +83,7 @@
 
 
 
+
 <!-- CARDS  -->
  <section class="wrapper">
         <div class="container-fostrap">
@@ -86,22 +93,22 @@
                         <!-- CARD 1 -->
                         <div class="col-xs-12 col-sm-4">
                             <div class="card">
-                                <a class="img-card" href="#route">
-                                    <img src="/img/Ltrak.png" />
+                                <a class="img-card" href="/signup">
+                                    <img src="/img/homesign.png" />
                                 </a>
                                 <div class="card-content text-center">
                                     <h4 class="card-title">
-                                        <a href="#route">
+                                        <a href="/signup">
                                             Sign Up for LifeTrak Today!
                                         </a>
                                     </h4>
                                     <p class="">
-                                        Tutorial to make a carousel bootstrap by adding more wonderful effect fadein ...
+                                    	Looking for away to keep track of you lifestyle? You found the perfect place.                            
                                     </p>
                                 </div>
                                 <div class="card-read-more">
-                                    <a href="#route" class="btn btn-link btn-block">
-                                        Register Today
+                                    <a href="/signup" class="btn btn-link btn-block">
+                                        Sign Up Today
                                     </a>
                                 </div>
                             </div>
@@ -110,53 +117,53 @@
                         <div class="col-xs-12 col-sm-4">
                             <div class="card">
                                 <a class="img-card"
-                                    href="http://www.fostrap.com/2016/03/5-button-hover-animation-effects-css3.html">
+                                    href="#">
                                     <img
-                                        src="https://3.bp.blogspot.com/-bAsTyYC8U80/VtLZRKN6OlI/AAAAAAAABjY/kAoljiMALkQ/s400/material%2Bnavbar.jpg" />
+                                        src="/img/sub.png" />
                                 </a>
-                                <div class="card-content">
+                                <div class="card-content text-center">
                                     <h4 class="card-title">
                                         <a
                                             href="#route">
-                                            Subscribe to Get Inspiratonal Advice
+                                            Subscribe Below!
                                         </a>
                                     </h4>
                                     <p class="">
-                                        Material Design is a visual programming language made by Google. Language
-                                        programming...
+										Out team sends out inspirational advice daily to ensure you stay on trak.
                                     </p>
                                 </div>
                                 <div class="card-read-more">
                                     <a href="https://codepen.io/wisnust10/full/ZWERZK/" class="btn btn-link btn-block">
-                                        Read More
+                                        Subscribe Now
                                     </a>
                                 </div>
                             </div>
                         </div>
+                        
                         <!-- CARD 3  -->
                         <div class="col-xs-12 col-sm-4">
                             <div class="card">
                                 <a class="img-card"
-                                    href="http://www.fostrap.com/2016/03/5-button-hover-animation-effects-css3.html">
+                                    href="/signin">
                                     <img
-                                        src="https://4.bp.blogspot.com/-TDIJ17DfCco/Vtneyc-0t4I/AAAAAAAABmk/aa4AjmCvRck/s1600/cover.jpg" />
+                                        src="/img/homesignin.png" />
                                 </a>
-                                <div class="card-content">
+                                <div class="card-content text-center">
                                     <h4 class="card-title">
                                         <a
-                                            href="http://www.fostrap.com/2016/03/5-button-hover-animation-effects-css3.html">5
-                                            Button Hover Animation Effects
+                                            href="/signin">
+                                            Already Have an Account?
                                         </a>
                                     </h4>
                                     <p class="">
-                                        tutorials button hover animation, although very much a hover button is very
-                                        beauti...
+                                    	Access your account. Be sure to stay up on trak. Your life well change
+
                                     </p>
                                 </div>
                                 <div class="card-read-more">
-                                    <a href="http://www.fostrap.com/2016/03/5-button-hover-animation-effects-css3.html"
+                                    <a href="/signin"
                                         class="btn btn-link btn-block">
-                                        Read More
+                                        Sign In
                                     </a>
                                 </div>
                             </div>

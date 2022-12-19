@@ -77,202 +77,195 @@
 <section>
 
 	<div class="container alltask">
+	
+<!-- COLUMN 1 -->	
+	
+	<!-- Task Create Form -->
 		<div class="row">
-			<section class="vh-100 bg-image col-lg-7">
-			  <div class="mask d-flex align-items-center h-100 gradient-custom-3">
-			    <div class="container h-100">
-			      <div class="row d-flex justify-content-center align-items-center h-100">
-			        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+			        <div class="col-lg-6 col-sm-12 mb-5">
 			          <div class="card" style="border-radius: 15px;">
 			            <div class="card-body p-5">
-			              <h2 class="text-uppercase text-center mb-5">Create an account</h2>
+			              <h2 class="text-uppercase text-center mb-5">Create lifetask</h2>
 			
 			              <form>
-			
 			                <div class="form-outline mb-4">
+			                  <label class="form-label" for="form3Example1cg">LifeTask:</label>
 			                  <input type="text" id="form3Example1cg" class="form-control form-control-lg" />
-			                  <label class="form-label" for="form3Example1cg">Your Name</label>
 			                </div>
+			                
+			                <div class="form-outline mb-4">
+			                  <label class="form-label" for="form3Example4cg">Due by:</label>
+			                  <input type="date" id="form3Example4cg" class="form-control form-control-lg" />
+			                </div>			
+			
+			
+							<div class="input-group mb-3">
+							  <label class="input-group-text bg-info" for="inputGroupSelect01">TrakTask:</label>
+							  <select class="form-select" id="inputGroupSelect01">
+							    <option selected>Choose...</option>
+							    <option value="3">Daily</option>
+							    <option value="3">Weekly</option>
+							    <option value="2">Monthly</option>
+							    <option value="1">Yearly</option>
+							  </select>
+							</div>
+							<div class="mb-3">
+							  <label for="exampleFormControlTextarea1" class="form-label">Description</label>
+							  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+							</div>
+							
 			
 			                <div class="form-outline mb-4">
-			                  <input type="email" id="form3Example3cg" class="form-control form-control-lg" />
-			                  <label class="form-label" for="form3Example3cg">Your Email</label>
+								<h2 class="text-uppercase text-center my-5">Make your dreams a reality!</h2>
 			                </div>
-			
-			                <div class="form-outline mb-4">
-			                  <input type="password" id="form3Example4cg" class="form-control form-control-lg" />
-			                  <label class="form-label" for="form3Example4cg">Password</label>
-			                </div>
-			
-			                <div class="form-outline mb-4">
-			                  <input type="password" id="form3Example4cdg" class="form-control form-control-lg" />
-			                  <label class="form-label" for="form3Example4cdg">Repeat your password</label>
-			                </div>
-			
-			                <div class="form-check d-flex justify-content-center mb-5">
-			                  <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3cg" />
-			                  <label class="form-check-label" for="form2Example3g">
-			                    I agree all statements in <a href="#!" class="text-body"><u>Terms of service</u></a>
-			                  </label>
-			                </div>
-			
+						
 			                <div class="d-flex justify-content-center">
 			                  <button type="button"
-			                    class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Register</button>
+			                    class="btn btn-info btn-block btn-lg gradient-custom-4 text-body">Create LifeTask</button>
 			                </div>
 			
-			                <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="#!"
-			                    class="fw-bold text-body"><u>Login here</u></a></p>
-			
 			              </form>
-			
 			            </div>
 			          </div>
-			        </div>
-			      </div>
-			    </div>
-			  </div>
-			</section>		
-		
-			<div class="col-lg-5">
-				<h1>Hello World</h1>
+			        </div>		
+
+<!-- COLUMN 2 -->
+
 				<!-- Nav Tabs -->
+			<div class="col-lg-6 col-sm-12">
 				  <ul class="nav nav-tabs" id="myTab" role="tablist">
-				  <li class="nav-item" role="presentation">
-				    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Home</button>
-				  </li>
-				  <li class="nav-item" role="presentation">
-				    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Profile</button>
-				  </li>
-				  <li class="nav-item" role="presentation">
-				    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">Contact</button>
-				  </li>
-				  <li class="nav-item" role="presentation">
-				    <button class="nav-link" id="disabled-tab" data-bs-toggle="tab" data-bs-target="#disabled-tab-pane" type="button" role="tab" aria-controls="disabled-tab-pane" aria-selected="false" disabled>Disabled</button>
-				  </li>
-				</ul>
-				<div class="tab-content" id="myTabContent">
-				  <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
-				  <table class="table align-middle mb-0 bg-white">
-				  <!-- The table -->
-					  <thead class="bg-light">
-					    <tr>
-					      <th>Name</th>
-					      <th>Title</th>
-					      <th>Status</th>
-					      <th>Position</th>
-					      <th>Actions</th>
-					    </tr>
-					  </thead>
-					  <tbody>
-					    <tr>
-					      <td>
-					        <div class="d-flex align-items-center">
-					          <img
-					              src="https://mdbootstrap.com/img/new/avatars/8.jpg"
-					              alt=""
-					              style="width: 45px; height: 45px"
-					              class="rounded-circle"
-					              />
-					          <div class="ms-3">
-					            <p class="fw-bold mb-1">John Doe</p>
-					            <p class="text-muted mb-0">john.doe@gmail.com</p>
-					          </div>
-					        </div>
-					      </td>
-					      <td>
-					        <p class="fw-normal mb-1">Software engineer</p>
-					        <p class="text-muted mb-0">IT department</p>
-					      </td>
-					      <td>
-					        <span class="badge badge-success rounded-pill d-inline">Active</span>
-					      </td>
-					      <td>Senior</td>
-					      <td>
-					        <button type="button" class="btn btn-link btn-sm btn-rounded">
-					          Edit
-					        </button>
-					      </td>
-					    </tr>
-					    <tr>
-					      <td>
-					        <div class="d-flex align-items-center">
-					          <img
-					              src="https://mdbootstrap.com/img/new/avatars/6.jpg"
-					              class="rounded-circle"
-					              alt=""
-					              style="width: 45px; height: 45px"
-					              />
-					          <div class="ms-3">
-					            <p class="fw-bold mb-1">Alex Ray</p>
-					            <p class="text-muted mb-0">alex.ray@gmail.com</p>
-					          </div>
-					        </div>
-					      </td>
-					      <td>
-					        <p class="fw-normal mb-1">Consultant</p>
-					        <p class="text-muted mb-0">Finance</p>
-					      </td>
-					      <td>
-					        <span class="badge badge-primary rounded-pill d-inline"
-					              >Onboarding</span
-					          >
-					      </td>
-					      <td>Junior</td>
-					      <td>
-					        <button
-					                type="button"
-					                class="btn btn-link btn-rounded btn-sm fw-bold"
-					                data-mdb-ripple-color="dark"
-					                >
-					          Edit
-					        </button>
-					      </td>
-					    </tr>
-					    <tr>
-					      <td>
-					        <div class="d-flex align-items-center">
-					          <img
-					              src="https://mdbootstrap.com/img/new/avatars/7.jpg"
-					              class="rounded-circle"
-					              alt=""
-					              style="width: 45px; height: 45px"
-					              />
-					          <div class="ms-3">
-					            <p class="fw-bold mb-1">Kate Hunington</p>
-					            <p class="text-muted mb-0">kate.hunington@gmail.com</p>
-					          </div>
-					        </div>
-					      </td>
-					      <td>
-					        <p class="fw-normal mb-1">Designer</p>
-					        <p class="text-muted mb-0">UI/UX</p>
-					      </td>
-					      <td>
-					        <span class="badge badge-warning rounded-pill d-inline">Awaiting</span>
-					      </td>
-					      <td>Senior</td>
-					      <td>
-					        <button
-					                type="button"
-					                class="btn btn-link btn-rounded btn-sm fw-bold"
-					                data-mdb-ripple-color="dark"
-					                >
-					          Edit
-					        </button>
-					      </td>
-					    </tr>
-					  </tbody>
-					</table>
-				  
-				  
-				  </div>
-				  <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">...</div>
-				  <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">...</div>
-				  <div class="tab-pane fade" id="disabled-tab-pane" role="tabpanel" aria-labelledby="disabled-tab" tabindex="0">...</div>
-				</div>
+					  <li class="nav-item" role="presentation">
+					    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Yearly</button>
+					  </li>
+					  <li class="nav-item" role="presentation">
+					    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Monthly</button>
+					  </li>
+					  <li class="nav-item" role="presentation">
+					    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">Weekly</button>
+					  </li>
+					  <li class="nav-item" role="presentation">
+					    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">Daily</button>
+					  </li>				  
+				  </ul>
 				
+				<!-- TAB CONTENT 1 Yearly-->
+				
+				<div class="tab-content p-2" id="myTabContent">
+					<div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+					  <!-- The table -->
+					  <table class="table align-middle mb-0 bg-white">
+						  <thead class="bg-light">
+						    <tr>
+						      <!-- <th>Name</th> -->
+						      <th>LifeTask</th>
+						      <th>Due By:</th>
+						      <th>TrakTask</th>
+						      <th>Actions</th>
+						    </tr>
+						  </thead>
+						  <tbody>
+						    <tr>
+						      <td>
+<!-- 						        <div class="d-flex align-items-center">
+						          <img
+						              src="https://mdbootstrap.com/img/new/avatars/8.jpg"
+						              alt=""
+						              style="width: 45px; height: 45px"
+						              class="rounded-circle"
+						              />
+						        </div> -->
+						      </td>
+						      <td>
+						        <p class="fw-normal mb-1">Software engineer</p>
+						        <p class="text-muted mb-0">IT department</p>
+						      </td>
+						      <td>
+						        <span class="badge badge-success rounded-pill d-inline">Active</span>
+						      </td>
+						      <td>Senior</td>
+						      <td>
+						        <button type="button" class="btn btn-link btn-sm btn-rounded">
+						          Edit
+						        </button>
+						        
+						        
+						      </td>
+						    </tr>
+						    
+						    
+						    
+						    <tr>
+						      <td>
+<!-- 						        <div class="d-flex align-items-center">
+						          <img
+						              src="https://mdbootstrap.com/img/new/avatars/6.jpg"
+						              class="rounded-circle"
+						              alt=""
+						              style="width: 45px; height: 45px"
+						              />
+						        </div> -->
+						      </td>
+						      <td>
+						        <p class="fw-normal mb-1">Consultant</p>
+						        <p class="text-muted mb-0">Finance</p>
+						      </td>
+						      <td>
+						        <span class="badge badge-primary rounded-pill d-inline"
+						              >Onboarding</span
+						          >
+						      </td>
+						      <td>Junior</td>
+						      <td>
+						        <button
+						                type="button"
+						                class="btn btn-link btn-rounded btn-sm fw-bold"
+						                data-mdb-ripple-color="dark"
+						                >
+						          Edit
+						        </button>
+						      </td>
+						    </tr>
+						    
+						    
+						    <tr>
+						      <td>
+<!-- 						        <div class="d-flex align-items-center">
+						          <img
+						              src="https://mdbootstrap.com/img/new/avatars/7.jpg"
+						              class="rounded-circle"
+						              alt=""
+						              style="width: 45px; height: 45px"
+						              />
+						        </div> -->
+						      </td>
+						      <td>
+						        <p class="fw-normal mb-1">Designer</p>
+						        <p class="text-muted mb-0">UI/UX</p>
+						      </td>
+						      <td>
+						        <span class="badge badge-warning rounded-pill d-inline">Awaiting</span>
+						      </td>
+						      <td>Senior</td>
+						      <td>
+						        <button
+						                type="button"
+						                class="btn btn-link btn-rounded btn-sm fw-bold"
+						                data-mdb-ripple-color="dark"
+						                >
+						          Edit
+						        </button>
+						      </td>
+						    </tr>
+						  </tbody>
+						</table>
+					  </div>
+					<div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">...</div>
+					<div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">...</div>
+					<div class="tab-pane fade" id="disabled-tab-pane" role="tabpanel" aria-labelledby="disabled-tab" tabindex="0">...</div>
+				</div>
 			</div>
+
+			
 		</div>
 	</div>
 </section>

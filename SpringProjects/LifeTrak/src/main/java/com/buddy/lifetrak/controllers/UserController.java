@@ -20,7 +20,7 @@ public class UserController {
 	@Autowired
 	UserService userServ;
 	
-	
+//	SHOW SIGN UP ROUTE
 	@GetMapping("/signup")
 	public String index(
 		@ModelAttribute("newUser") User emptyUser,
@@ -42,16 +42,28 @@ public class UserController {
 		User createdUser = userServ.register(filledUser, results);
 		if(results.hasErrors()) {
 			model.addAttribute("newLogin", new LoginUser());
-			return "/user/index.jsp";
+			return "/user/signup.jsp";
 		}
 		// SAVE THE USERS ID IN SESSION
 		session.setAttribute("user_id", createdUser.getId());
-		return "redirect:/homepage";
+		return "redirect:/dashboard";
 	}
+	
+	
+	
+//	SHOW LOG IN ROUTE
+	
+	@GetMapping("/signin")
+	public String login(
+		@ModelAttribute("newLogin") LoginUser emptyLoginUser
+	) {
+		return "/user/signin.jsp";
+	}
+	
 	
 	// PROCESS LOGIN
 	@PostMapping("/login")
-	public String login(
+	public String loginProcess(
 		@Valid @ModelAttribute("newLogin") LoginUser filledLoginUser,
 		BindingResult results,
 		HttpSession session,
@@ -60,39 +72,56 @@ public class UserController {
 		User loggedUser = userServ.login(filledLoginUser, results);
 		if(results.hasErrors()) {
 			model.addAttribute("newUser", new User());
-			return "/user/index.jsp";
+			return "/user/signin.jsp";
 		}
 		session.setAttribute("user_id", loggedUser.getId()); 
-		return "redirect:/homepage";
+		return "redirect:/dashboard";
 	}
 	
-	// THIS ROUTE ALLOWS YOU TO DISPLAY USERS NAME AS WELL.
 	
-	@GetMapping("/homepage")
-	public String homepage(
-		HttpSession session,
-		Model model // VIEW MODEL ANY INFO FROM CONTROLLER TO JSP
-	) {		
-		Long userId = (Long) session.getAttribute("user_id");// WE ARE CASTING TO LONG BECAUSE WE NEED TO CHANGE FROM A OBJECT
-		if(session.getAttribute("user_id") == null) {
-			return "redirect:/";
-		}
-		model.addAttribute("oneUser", userServ.getOneUser(userId));
-		return "dashboard.jsp";
-		
-	}
+	
+	
+	
+//	LOGOUT 
 	
 	@GetMapping("/logout")
-	public String logout(HttpSession session) {
-		session.setAttribute("user_id", null);
+	public String logout(
+		HttpSession session
+	) {
+		session.invalidate();
 		return "redirect:/";
 	}
 
 	
 	
 	
+	// THIS ROUTE ALLOWS YOU TO DISPLAY USERS NAME AS WELL.
+	
+//	@GetMapping("/homepage")
+//	public String homepage(
+//		HttpSession session,
+//		Model model // VIEW MODEL ANY INFO FROM CONTROLLER TO JSP
+//	) {		
+//		Long userId = (Long) session.getAttribute("user_id");// WE ARE CASTING TO LONG BECAUSE WE NEED TO CHANGE FROM A OBJECT
+//		if(session.getAttribute("user_id") == null) {
+//			return "redirect:/";
+//		}
+//		model.addAttribute("oneUser", userServ.getOneUser(userId));
+//		return "dashboard.jsp";
+//		
+//	}
 	
 	
+//	Original LOG and REG Route
+	
+//	
+//	@GetMapping("/signup")
+//	public String index(
+//		@ModelAttribute("newUser") User emptyUser,
+//		@ModelAttribute("newLogin") LoginUser emptyLoginUser
+//	) {
+//		return "/user/signup.jsp";
+//	}
 	
 	
 }

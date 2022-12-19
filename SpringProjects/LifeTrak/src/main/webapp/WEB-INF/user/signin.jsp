@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>LifeTrak</title>
+<title>Insert title here</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <!-- NEW LINKS -->
 <link href = "https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel = "stylesheet">  
@@ -17,8 +17,6 @@
 </script>  
 </head>
 <body>
-
-
 
 <!-- NAVBAR  --> 
 <section>
@@ -71,108 +69,45 @@
 	</div>
 </section>
 
-<!-- DASHBOARD BANNER -->
-<section>
-	
 
-	<div class="container">
-	
-		<img class="img-fluid bannerdash shadow-lg p-3 bg-bodyrounded-1"width="" alt="" src="/img/dashban.png" >
-		<h1 class="text-dark mt-4">Welcome to LifeTrak, 
-			<span class="text-info">
-				<c:out value="${oneUser.firstName}"/> 
-			</span>	
-		</h1>	
-		
-	</div>
-	
+<!--Sign Up -->
+
+<section class="h-100 h-custom">
+  <div class="container signup py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-8 col-xl-6">
+        <div class="card rounded-3">
+          <img src="/img/signin.png"
+            class="w-100" style="border-top-left-radius: .3rem; border-top-right-radius: .3rem;"
+            alt="Sample photo">
+          <div class="card-body p-4 p-md-5">
+            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2 text-center">LifeTrak Log In!</h3>
+		<!-- FORM STARTS -->
+            <form:form action="/login" method="post" modelAttribute="newLogin" class="px-md-2">
+             
+              <div class="form-outline mb-4">
+                <label class="form-label" for="form3Example1q">Email</label>
+                <form:input path="email" type="text" class="form-control" />
+                <form:errors path="email" />
+              </div>
+              
+              <div class="form-outline mb-4">
+                <label class="form-label" for="form3Example1q">Password</label>
+                <form:input path="password" type="password" class="form-control" />
+                <form:errors path="password" />
+              </div>
+              
+              <button type="submit" class="btn btn-info btn-lg bg-gradient-custom-4 mb-1 ">Submit</button>
+                <p class="text-center text-muted mt-5 mb-0">Need to Sign Up? <a href="/signup"
+                    class="fw-bold text-body">Sign Up here</a></p>                           
+            </form:form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
-
-
-
-
-<section>
-
-	<div class="container mt-3">
-	
-<!-- COLUMN 1 -->	
-	
-	<!-- Task Create Form -->
-		<div class="row">
-		
-		<div class="col-lg-6">
-			<p class="fs-4">
-				Lifetrak wants to help you stay on track to reach your goals. 
-				Setting daily, weekly, an monthly goals is an important part of reaching 
-				life successes. Create your your next task an or goal today.
-				We are here to keep your Life on Trak.Lifetrak wants to help you stay on track to reach your goals. 
-				Setting daily,
-			</p>
-				<div class="dashhov">				
-				<a href="/alltask">
-					<img  class="dashhov img-fluid shadow-lg bg-body my-4 " width="" alt="" src="/img/access.png" >				
-				</a>
-				</div>
-			<p class="fs-4">	 
-				Lifetrak wants to help you stay on track to reach your goals. 
-				Setting daily, weekly, an monthly goals is an important part of reaching 
-				life successes. Create your your next task an or goal today.
-				We are here to keep your Life on Trak. 
-			</p>
-			
-			
-		</div>
-			
-
-<!-- COLUMN 2 -->
-	<!-- Task Create Form -->
-	        <div class="col-lg-6 col-sm-12 mb-5">
-	          <div class="card" style="border-radius: 15px;">
-	            <div class="card-body p-5">
-	              <h2 class="text-uppercase text-center mb-5">Create lifetask</h2>
-	
-	              <form>
-	                <div class="form-outline mb-4">
-	                  <label class="form-label" for="form3Example1cg">LifeTask:</label>
-	                  <input type="text" id="form3Example1cg" class="form-control form-control-lg" />
-	                </div>
-	                
-	                <div class="form-outline mb-4">
-	                  <label class="form-label" for="form3Example4cg">Due by:</label>
-	                  <input type="date" id="form3Example4cg" class="form-control form-control-lg" />
-	                </div>			
-	
-	
-					<div class="input-group mb-3">
-					  <label class="input-group-text bg-info" for="inputGroupSelect01">TrakTask:</label>
-					  <select class="form-select" id="inputGroupSelect01">
-					    <option selected>Choose...</option>
-					    <option value="3">Daily</option>
-					    <option value="3">Weekly</option>
-					    <option value="2">Monthly</option>
-					    <option value="1">Yearly</option>
-					  </select>
-					</div>
-					<div class="mb-3">
-					  <label for="exampleFormControlTextarea1" class="form-label">Description</label>
-					  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-					</div>
-											
-	                <div class="d-flex justify-content-center">
-	                  <button type="button"
-	                    class="btn btn-info btn-block btn-lg gradient-custom-4 text-body">Create LifeTask</button>
-	                </div>
-	
-	              </form>
-	            </div>
-	          </div>
-	        </div>	
-		</div>
-	</div>
-</section>
-
-
-
 
  
  
@@ -231,8 +166,6 @@
 	  </div>
 	  <!-- Copyright -->
 	</footer>
-
-
 </section>
 
 

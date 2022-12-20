@@ -23,15 +23,15 @@
 <!-- NAVBAR  --> 
 <section>
 	<div class="container">
-		<nav class="navbar navbar-dark bg-info fixed-top p-2">
+		<nav class="navbar navbar-dark bg-info fixed-top p-2 navcolor">
 		  <div class="container-fluid">
-		  <div class="navbar-edit">	  
-		    <a class="navbar-brand" href="#">LifeTrak</a>
+		  <div class="navbar-edit d-none d-sm-block">	  
+		    <a class="navbar-brand" href="/">LifeTrak</a>
 		  </div>
 		   <div class="navbar-edit ">	
 		 <!--   NAV BAR LOGO   -->
-		    <a class="navbar-brand" href="#">
-		    	<img  class="img-fluid" src="/img/white_logo.png" width="80px" height="100px" />
+		    <a class="navbar-brand" href="/">
+		    	<img  class="img-fluid logo " src="/img/lifelogo.png" width="60px" height="100px" />
 		    </a>
 		  </div>
 		    <button class="navbar-toggler me-5" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
@@ -45,24 +45,33 @@
 		      <div class="offcanvas-body">
 		        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
 		          <li class="nav-item">
-		            <a class="nav-link active text-dark" aria-current="page" href="/">Home</a>
+		            	<a class="nav-link active text-dark" aria-current="page" href="/">Home</a>
 		          </li>
 		          <li class="nav-item">
-		            <a class="nav-link text-dark" href="/signup">Login</a>
+		          	  <c:if test="${user_id == oneUser.id}">		          	 		          	  
+		           		<a class="nav-link text-dark" href="/alltask">Life Task</a>
+					  </c:if>
 		          </li>
-		          <li class="nav-item dropdown">
-		            <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-		              Dropdown
-		            </a>
-		            <ul class="dropdown-menu dropdown-menu-dark">
-		              <li><a class="dropdown-item text-dark" href="#">Action</a></li>
-		              <li><a class="dropdown-item text-dark" href="#">Another action</a></li>
-		              <li>
-		                <hr class="dropdown-divider">
-		              </li>
-		              <li><a class="dropdown-item text-dark" href="#">Something else here</a></li>
-		            </ul>
+		          <li class="nav-item">
+		          	  <c:if test="${user_id == oneUser.id}">					  
+		           		<a class="nav-link text-dark" href="/dashboard">Dashboard</a>
+					  </c:if>
 		          </li>
+				  <li class="nav-item">
+				  	  <c:if test="${user_id != oneUser.id}">
+		            	<a class="nav-link text-dark" href="/signup">Sign Up</a>
+		              </c:if>
+		          </li>
+		          <li class="nav-item">
+		          	<c:if test="${user_id != oneUser.id}">
+		            	<a class="nav-link text-dark" href="/signin">Sign In</a>
+		             </c:if>
+		          </li>
+			      <li class="nav-item">
+			          <c:if test="${user_id == oneUser.id}">
+				            <a class="nav-link text-dark" href="/logout">Logout</a> 
+					  </c:if>			     
+			      </li>
 		        </ul>
 		      </div>
 		    </div>
@@ -126,47 +135,60 @@
 
 <!-- COLUMN 2 -->
 	<!-- Task Create Form -->
-	        <div class="col-lg-6 col-sm-12 mb-5">
-	          <div class="card" style="border-radius: 15px;">
-	            <div class="card-body p-5">
-	              <h2 class="text-uppercase text-center mb-5">Create lifetask</h2>
-	
-	              <form>
-	                <div class="form-outline mb-4">
-	                  <label class="form-label" for="form3Example1cg">LifeTask:</label>
-	                  <input type="text" id="form3Example1cg" class="form-control form-control-lg" />
-	                </div>
-	                
-	                <div class="form-outline mb-4">
-	                  <label class="form-label" for="form3Example4cg">Due by:</label>
-	                  <input type="date" id="form3Example4cg" class="form-control form-control-lg" />
-	                </div>			
-	
-	
-					<div class="input-group mb-3">
-					  <label class="input-group-text bg-info" for="inputGroupSelect01">TrakTask:</label>
-					  <select class="form-select" id="inputGroupSelect01">
-					    <option selected>Choose...</option>
-					    <option value="3">Daily</option>
-					    <option value="3">Weekly</option>
-					    <option value="2">Monthly</option>
-					    <option value="1">Yearly</option>
-					  </select>
-					</div>
-					<div class="mb-3">
-					  <label for="exampleFormControlTextarea1" class="form-label">Description</label>
-					  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-					</div>
-											
-	                <div class="d-flex justify-content-center">
-	                  <button type="button"
-	                    class="btn btn-info btn-block btn-lg gradient-custom-4 text-body">Create LifeTask</button>
-	                </div>
-	
-	              </form>
-	            </div>
-	          </div>
-	        </div>	
+			        <div class="col-lg-6 col-sm-12 mb-5">
+			          <div class="card" style="border-radius: 15px;">
+			            <div class="card-body p-5">
+			              <h2 class="text-uppercase text-center mb-5">Create lifetask</h2>
+			
+			<!-- FORM STARTS HERE -->
+			            <form:form modelAttribute="taskObj" action="/dashboard/new" method="POST">
+			              <form:input type="hidden" path="creator" value="${user_id}" />
+			                
+			                <div class="form-outline mb-4">
+			                  <form:label path="lifeTask" class="form-label">LifeTask:</form:label>
+			                  <form:errors path="lifeTask" class="text-danger" />
+			                  <form:input path="lifeTask" type="text" id="form3Example1cg" class="form-control form-control-lg" />
+			                </div>
+			                
+			                <div class="form-outline mb-4">
+			                  <form:label path="dueBy" class="form-label" for="form3Example4cg">Due by:</form:label>
+			                  <form:errors path="dueBy" class="text-danger" />
+			                  <form:input path="dueBy" type="date" id="form3Example4cg" class="form-control form-control-lg" />
+			                </div>			
+			
+			
+							<div class="input-group mb-3">
+							  	  <label class="input-group-text bg-info" for="inputGroupSelect01">TrakTask:</label>
+								  <form:select path="trakTask" class="form-select" id="inputGroupSelect01">
+								    <form:option value="Daily">Daily</form:option>
+								    <form:option value="Weekly">Weekly</form:option>
+								    <form:option value="Monthly">Monthly</form:option>
+								    <form:option value="Yearly">Yearly</form:option>
+								  </form:select>
+							</div>
+							
+							
+							<div class="mb-3">
+							  <form:label path="description" for="exampleFormControlTextarea1" class="form-label">Description</form:label>
+							  <form:errors path="description" class="text-danger" />
+							  <form:textarea type="text" path="description" id="" class="form-control" rows="3" />
+							  <%-- <form:textarea type="number" path="description" class="form-control" id="exampleFormControlTextarea1" rows="3"></form:textarea> --%>
+							</div>
+							
+			
+			                <div class="form-outline mb-4">
+								<h6 class="text-uppercase text-center ">Make your dreams a reality!</h6>
+			                </div>
+						
+			                <div class="d-flex justify-content-center">
+<!-- 			                  <a href="/alltask" class="btn btn-info btn-block btn-lg 
+			                  gradient-custom-4 text-body">Create LifeTask
+			                  </a> -->
+							<input class="btn btn-info btn-block btn-lg 
+			                  gradient-custom-4 text-body" type="submit" value="Create LifeTask"/>	                  
+			                </div>
+			              </form:form>			              
+			            </div>
 		</div>
 	</div>
 </section>

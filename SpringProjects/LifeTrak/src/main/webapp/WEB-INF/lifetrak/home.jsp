@@ -25,13 +25,13 @@
 	<div class="container">
 		<nav class="navbar navbar-dark bg-info fixed-top p-2 navcolor">
 		  <div class="container-fluid">
-		  <div class="navbar-edit">	  
-		    <a class="navbar-brand" href="#">LifeTrak</a>
+		  <div class="navbar-edit d-none d-sm-block">	  
+		    <a class="navbar-brand" href="/">LifeTrak</a>
 		  </div>
 		   <div class="navbar-edit ">	
 		 <!--   NAV BAR LOGO   -->
-		    <a class="navbar-brand" href="#">
-		    	<img  class="img-fluid" src="/img/lifelogo.png" width="80px" height="100px" />
+		    <a class="navbar-brand" href="/">
+		    	<img  class="img-fluid logo " src="/img/lifelogo.png" width="60px" height="100px" />
 		    </a>
 		  </div>
 		    <button class="navbar-toggler me-5" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
@@ -48,20 +48,28 @@
 		            	<a class="nav-link active text-dark" aria-current="page" href="/">Home</a>
 		          </li>
 		          <li class="nav-item">
+		          	  <c:if test="${user_id != oneUser.creator.id}">		          	 		          	  
 		           		<a class="nav-link text-dark" href="/alltask">Life Task</a>
+					  </c:if>
 		          </li>
 		          <li class="nav-item">
+		          	  <c:if test="${user_id != oneUser.creator.id}">					  
 		           		<a class="nav-link text-dark" href="/dashboard">Dashboard</a>
+					  </c:if>
 		          </li>
 				  <li class="nav-item">
+				  	  <c:if test="${user_id == oneUser.creator.id}">
 		            	<a class="nav-link text-dark" href="/signup">Sign Up</a>
+		              </c:if>
 		          </li>
 		          <li class="nav-item">
+		          	<c:if test="${user_id == oneUser.creator.id}">
 		            	<a class="nav-link text-dark" href="/signin">Sign In</a>
+		             </c:if>
 		          </li>
 			      <li class="nav-item">
-				            <a class="nav-link text-dark" href="/logout">Logout</a>
-			          <c:if test="${user_id == null}">
+			          <c:if test="${user_id != oneUser.creator.id}">
+				            <a class="nav-link text-dark" href="/logout">Logout</a> 
 					  </c:if>			     
 			      </li>
 		        </ul>
@@ -125,12 +133,12 @@
         <div class="container-fostrap">
             <div class="content">
                 <div class="container">
-                    <div class="row align-items-stretch">
+                    <div class="row gy-4">
                         <!-- CARD 1 -->
                         <div class="col-xs-12 col-sm-4">
-                            <div class="card">
+                            <div class="card h-100">
                                 <a class="img-card" href="/signup">
-                                    <img class="" src="/img/homesign.png" />
+                                    <img class="" src="/img/homesignup.png" />
                                 </a>
                                 <div class="card-content text-center">
                                     <h4 class="card-title">
@@ -151,7 +159,7 @@
                         </div>
                         <!-- CARD 2  -->
                         <div class="col-xs-12 col-sm-4">
-                            <div class="card">
+                            <div class="card h-100">
                                 <a class="img-card"
                                     href="#">
                                     <img
@@ -178,11 +186,11 @@
                         
                         <!-- CARD 3  -->
                         <div class="col-xs-12 col-sm-4">
-                            <div class="card">
+                            <div class="card h-100">
                                 <a class="img-card"
                                     href="/signin">
                                     <img
-                                        src="/img/homesignin.png" />
+                                        src="/img/homesign.png" />
                                 </a>
                                 <div class="card-content text-center">
                                     <h4 class="card-title">

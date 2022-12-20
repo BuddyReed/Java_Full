@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="java.util.Date"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
     <!-- New line below to use the JSP Standard Tag Library -->
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
@@ -23,15 +24,15 @@
 <!-- NAVBAR  --> 
 <section>
 	<div class="container">
-		<nav class="navbar navbar-dark bg-info fixed-top p-2">
+		<nav class="navbar navbar-dark bg-info fixed-top p-2 navcolor">
 		  <div class="container-fluid">
-		  <div class="navbar-edit">	  
-		    <a class="navbar-brand" href="#">LifeTrak</a>
+		  <div class="navbar-edit d-none d-sm-block">	  
+		    <a class="navbar-brand" href="/">LifeTrak</a>
 		  </div>
 		   <div class="navbar-edit ">	
 		 <!--   NAV BAR LOGO   -->
-		    <a class="navbar-brand" href="#">
-		    	<img  class="img-fluid" src="/img/white_logo.png" width="80px" height="100px" />
+		    <a class="navbar-brand" href="/">
+		    	<img  class="img-fluid logo " src="/img/lifelogo.png" width="60px" height="100px" />
 		    </a>
 		  </div>
 		    <button class="navbar-toggler me-5" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
@@ -45,24 +46,33 @@
 		      <div class="offcanvas-body">
 		        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
 		          <li class="nav-item">
-		            <a class="nav-link active text-dark" aria-current="page" href="/">Home</a>
+		            	<a class="nav-link active text-dark" aria-current="page" href="/">Home</a>
 		          </li>
 		          <li class="nav-item">
-		            <a class="nav-link text-dark" href="/signup">Login</a>
+		          	  		          	 		          	  
+		           		<a class="nav-link text-dark" href="/alltask">Life Task</a>
+					 
 		          </li>
-		          <li class="nav-item dropdown">
-		            <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-		              Dropdown
-		            </a>
-		            <ul class="dropdown-menu dropdown-menu-dark">
-		              <li><a class="dropdown-item text-dark" href="#">Action</a></li>
-		              <li><a class="dropdown-item text-dark" href="#">Another action</a></li>
-		              <li>
-		                <hr class="dropdown-divider">
-		              </li>
-		              <li><a class="dropdown-item text-dark" href="#">Something else here</a></li>
-		            </ul>
+		          <li class="nav-item">
+		          	  					  
+		           		<a class="nav-link text-dark" href="/dashboard">Dashboard</a>
+					 
 		          </li>
+				  <li class="nav-item">
+				  	<c:if test="${user_id == oneUser.creator.id}">
+		            	<a class="nav-link text-dark" href="/signup">Sign Up</a>
+		            </c:if>
+		          </li>
+		          <li class="nav-item">
+		          	<c:if test="${user_id == oneUser.creator.id}">
+		            	<a class="nav-link text-dark" href="/signin">Sign In</a>
+		            </c:if>
+		          </li>
+			      <li class="nav-item">
+	
+				            <a class="nav-link text-dark" href="/logout">Logout</a> 
+						     
+			      </li>
 		        </ul>
 		      </div>
 		    </div>
@@ -82,49 +92,62 @@
 	
 	<!-- Task Create Form -->
 		<div class="row">
-			        <div class="col-lg-6 col-sm-12 mb-5">
+			        <div class="col-lg-4 col-sm-12 mb-5">
 			          <div class="card" style="border-radius: 15px;">
 			            <div class="card-body p-5">
 			              <h2 class="text-uppercase text-center mb-5">Create lifetask</h2>
 			
-			              <form>
+			<!-- FORM STARTS HERE -->
+			            <form:form modelAttribute="taskObj" action="/alltask/new" method="POST">
+			              <form:input type="hidden" path="creator" value="${user_id}" />
+			                
 			                <div class="form-outline mb-4">
-			                  <label class="form-label" for="form3Example1cg">LifeTask:</label>
-			                  <input type="text" id="form3Example1cg" class="form-control form-control-lg" />
+			                  <form:label path="lifeTask" class="form-label">LifeTask:</form:label>
+			                  <form:errors path="lifeTask" class="text-danger" />
+			                  <form:input path="lifeTask" type="text" id="form3Example1cg" class="form-control form-control-lg" />
 			                </div>
 			                
 			                <div class="form-outline mb-4">
-			                  <label class="form-label" for="form3Example4cg">Due by:</label>
-			                  <input type="date" id="form3Example4cg" class="form-control form-control-lg" />
+			                  <form:label path="dueBy" class="form-label" for="form3Example4cg">Due by:</form:label>
+			                  <form:errors path="dueBy" class="text-danger" />
+			                  <form:input path="dueBy" type="date" id="form3Example4cg" class="form-control form-control-lg" />
 			                </div>			
 			
 			
 							<div class="input-group mb-3">
-							  <label class="input-group-text bg-info" for="inputGroupSelect01">TrakTask:</label>
-							  <select class="form-select" id="inputGroupSelect01">
-							    <option selected>Choose...</option>
-							    <option value="3">Daily</option>
-							    <option value="3">Weekly</option>
-							    <option value="2">Monthly</option>
-							    <option value="1">Yearly</option>
-							  </select>
+							  	  <label class="input-group-text bg-info" for="inputGroupSelect01">TrakTask:</label>
+								  <form:select path="trakTask" class="form-select" id="inputGroupSelect01">
+								    <form:option value="Daily">Daily</form:option>
+								    <form:option value="Weekly">Weekly</form:option>
+								    <form:option value="Monthly">Monthly</form:option>
+								    <form:option value="Yearly">Yearly</form:option>
+								  </form:select>
 							</div>
+							
+							
 							<div class="mb-3">
-							  <label for="exampleFormControlTextarea1" class="form-label">Description</label>
-							  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+							  <form:label path="description" for="exampleFormControlTextarea1" class="form-label">Description</form:label>
+							  <form:errors path="description" class="text-danger" />
+							  <form:textarea type="text" path="description" id="" class="form-control" rows="3" />
+							  <%-- <form:textarea type="number" path="description" class="form-control" id="exampleFormControlTextarea1" rows="3"></form:textarea> --%>
 							</div>
 							
 			
 			                <div class="form-outline mb-4">
-								<h2 class="text-uppercase text-center my-5">Make your dreams a reality!</h2>
+								<h6 class="text-uppercase text-center ">Make your dreams a reality!</h6>
 			                </div>
 						
 			                <div class="d-flex justify-content-center">
-			                  <button type="button"
-			                    class="btn btn-info btn-block btn-lg gradient-custom-4 text-body">Create LifeTask</button>
+<!-- 			                  <a href="/alltask" class="btn btn-info btn-block btn-lg 
+			                  gradient-custom-4 text-body">Create LifeTask
+			                  </a> -->
+							<input class="btn btn-info btn-block btn-lg 
+			                  gradient-custom-4 text-body" type="submit" value="Create LifeTask"/>
+			                  
 			                </div>
 			
-			              </form>
+			              </form:form>
+			              
 			            </div>
 			          </div>
 			        </div>		
@@ -132,7 +155,7 @@
 <!-- COLUMN 2 -->
 
 				<!-- Nav Tabs -->
-			<div class="col-lg-6 col-sm-12">
+			<div class="col-lg-8 col-sm-12">
 				  <ul class="nav nav-tabs" id="myTab" role="tablist">
 					  <li class="nav-item" role="presentation">
 					    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Yearly</button>
@@ -144,13 +167,13 @@
 					    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">Weekly</button>
 					  </li>
 					  <li class="nav-item" role="presentation">
-					    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">Daily</button>
+					    <button class="nav-link" id="about-tab" data-bs-toggle="tab" data-bs-target="#about-tab-pane" type="button" role="tab" aria-controls="about-tab-pane" aria-selected="false">Daily</button>
 					  </li>				  
 				  </ul>
 				
-				<!-- TAB CONTENT 1 Yearly-->
-				
+				<!-- START THE TAB CONTENT -->
 				<div class="tab-content p-2" id="myTabContent">
+				<!-- TAB CONTENT 1 Yearly-->
 					<div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
 					  <!-- The table -->
 					  <table class="table align-middle mb-0 bg-white">
@@ -163,105 +186,146 @@
 						      <th>Actions</th>
 						    </tr>
 						  </thead>
-						  <tbody>
-						    <tr>
-						      <td>
-<!-- 						        <div class="d-flex align-items-center">
-						          <img
-						              src="https://mdbootstrap.com/img/new/avatars/8.jpg"
-						              alt=""
-						              style="width: 45px; height: 45px"
-						              class="rounded-circle"
-						              />
-						        </div> -->
-						      </td>
-						      <td>
-						        <p class="fw-normal mb-1">Software engineer</p>
-						        <p class="text-muted mb-0">IT department</p>
-						      </td>
-						      <td>
-						        <span class="badge badge-success rounded-pill d-inline">Active</span>
-						      </td>
-						      <td>Senior</td>
-						      <td>
-						        <button type="button" class="btn btn-link btn-sm btn-rounded">
-						          Edit
-						        </button>
-						        
-						        
-						      </td>
-						    </tr>
-						    
-						    
-						    
-						    <tr>
-						      <td>
-<!-- 						        <div class="d-flex align-items-center">
-						          <img
-						              src="https://mdbootstrap.com/img/new/avatars/6.jpg"
-						              class="rounded-circle"
-						              alt=""
-						              style="width: 45px; height: 45px"
-						              />
-						        </div> -->
-						      </td>
-						      <td>
-						        <p class="fw-normal mb-1">Consultant</p>
-						        <p class="text-muted mb-0">Finance</p>
-						      </td>
-						      <td>
-						        <span class="badge badge-primary rounded-pill d-inline"
-						              >Onboarding</span
-						          >
-						      </td>
-						      <td>Junior</td>
-						      <td>
-						        <button
-						                type="button"
-						                class="btn btn-link btn-rounded btn-sm fw-bold"
-						                data-mdb-ripple-color="dark"
-						                >
-						          Edit
-						        </button>
-						      </td>
-						    </tr>
-						    
-						    
-						    <tr>
-						      <td>
-<!-- 						        <div class="d-flex align-items-center">
-						          <img
-						              src="https://mdbootstrap.com/img/new/avatars/7.jpg"
-						              class="rounded-circle"
-						              alt=""
-						              style="width: 45px; height: 45px"
-						              />
-						        </div> -->
-						      </td>
-						      <td>
-						        <p class="fw-normal mb-1">Designer</p>
-						        <p class="text-muted mb-0">UI/UX</p>
-						      </td>
-						      <td>
-						        <span class="badge badge-warning rounded-pill d-inline">Awaiting</span>
-						      </td>
-						      <td>Senior</td>
-						      <td>
-						        <button
-						                type="button"
-						                class="btn btn-link btn-rounded btn-sm fw-bold"
-						                data-mdb-ripple-color="dark"
-						                >
-						          Edit
-						        </button>
-						      </td>
-						    </tr>
-						  </tbody>
+							  <tbody>				  
+								  <c:forEach var="task" items="${yearlyLifeTasks}">
+									    <tr>
+									    	<c:if test="${user_id == task.creator.id}">
+										      <td>
+										        	<p class="fw-normal mb-1"><c:out value="${task.lifeTask}" /></p>						      
+										      </td>
+										      
+										      <td>
+										        	<p class="fw-normal mb-1">
+										        		<fmt:formatDate value="${task.dueBy}" type="date" pattern="MMMM dd , yyyy"/>	
+										        	</p>
+										      </td>
+										      
+										      <td>
+										      		<p class="fw-normal mb-1"><c:out value="${task.trakTask}" /></p>						      
+										      </td>
+										      <td>
+										        <button type="button" class="btn btn-link btn-sm btn-rounded">
+										          Edit
+										        </button>							        							   
+										      </td>
+										    </c:if>
+									    </tr>
+								  </c:forEach>
+							  </tbody>
 						</table>
 					  </div>
-					<div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">...</div>
-					<div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">...</div>
-					<div class="tab-pane fade" id="disabled-tab-pane" role="tabpanel" aria-labelledby="disabled-tab" tabindex="0">...</div>
+					  
+				<!-- TAB CONTENT 1 Monthly-->
+					  <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+						  <table class="table align-middle mb-0 bg-white">
+							  <thead class="bg-light">
+							    <tr>
+							      <!-- <th>Name</th> -->
+							      <th>LifeTask</th>
+							      <th>Due By:</th>
+							      <th>TrakTask</th>
+							      <th>Actions</th>
+							    </tr>
+							  </thead>
+								  <tbody>				  
+									  <c:forEach var="task" items="${monthlyLifeTasks}">
+										    <tr>
+											      <td>
+											        	<p class="fw-normal mb-1"><c:out value="${task.lifeTask}" /></p>						      
+											      </td>
+											      
+											      <td>
+											        	<p class="fw-normal mb-1"><c:out value="${task.dueBy}" /></p>
+											      </td>
+											      
+											      <td>
+											      		<p class="fw-normal mb-1"><c:out value="${task.trakTask}" /></p>						      
+											      </td>
+											      <td>
+											        <button type="button" class="btn btn-link btn-sm btn-rounded">
+											          Edit
+											        </button>							        							   
+											      </td>
+										    </tr>
+									  </c:forEach>
+								  </tbody>
+							</table>					  
+					  </div>
+					  
+			<!-- TAB CONTENT 1 Weekly-->		  					  
+					<div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
+						  <table class="table align-middle mb-0 bg-white">
+							  <thead class="bg-light">
+							    <tr>
+							      <!-- <th>Name</th> -->
+							      <th>LifeTask</th>
+							      <th>Due By:</th>
+							      <th>TrakTask</th>
+							      <th>Actions</th>
+							    </tr>
+							  </thead>
+								  <tbody>				  
+									  <c:forEach var="task" items="${weeklyLifeTasks}">
+										    <tr>
+											      <td>
+											        	<p class="fw-normal mb-1"><c:out value="${task.lifeTask}" /></p>						      
+											      </td>
+											      
+											      <td>
+											        	<p class="fw-normal mb-1"><c:out value="${task.dueBy}" /></p>
+											      </td>
+											      
+											      <td>
+											      		<p class="fw-normal mb-1"><c:out value="${task.trakTask}" /></p>						      
+											      </td>
+											      <td>
+											        <button type="button" class="btn btn-link btn-sm btn-rounded">
+											          Edit
+											        </button>							        							   
+											      </td>
+										    </tr>
+									  </c:forEach>
+								  </tbody>
+							</table>										
+					</div>
+
+				<!-- TAB CONTENT 1 Weekly-->
+					<div class="tab-pane fade" id="about-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
+						  <table class="table align-middle mb-0 bg-white">
+							  <thead class="bg-light">
+							    <tr>
+							      <!-- <th>Name</th> -->
+							      <th>LifeTask</th>
+							      <th>Due By:</th>
+							      <th>TrakTask</th>
+							      <th>Actions</th>
+							    </tr>
+							  </thead>
+								  <tbody>				  
+									  <c:forEach var="task" items="${dailyLifeTasks}">
+										    <tr>
+											      <td>
+											        	<p class="fw-normal mb-1"><c:out value="${task.lifeTask}" /></p>						      
+											      </td>
+											      
+											      <td>
+											        	<p class="fw-normal mb-1"><c:out value="${task.dueBy}" /></p>
+											      </td>
+											      
+											      <td>
+											      		<p class="fw-normal mb-1"><c:out value="${task.trakTask}" /></p>						      
+											      </td>
+											      <td>
+											        <button type="button" class="btn btn-link btn-sm btn-rounded">
+											          Edit
+											        </button>							        							   
+											      </td>
+										    </tr>
+									  </c:forEach>
+								  </tbody>
+							</table>										
+					</div>					
+
 				</div>
 			</div>
 

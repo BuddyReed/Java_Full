@@ -21,15 +21,15 @@
 <!-- NAVBAR  --> 
 <section>
 	<div class="container">
-		<nav class="navbar navbar-dark bg-info fixed-top p-2">
+		<nav class="navbar navbar-dark bg-info fixed-top p-2 navcolor">
 		  <div class="container-fluid">
-		  <div class="navbar-edit">	  
-		    <a class="navbar-brand" href="#">LifeTrak</a>
+		  <div class="navbar-edit d-none d-sm-block">	  
+		    <a class="navbar-brand" href="/">LifeTrak</a>
 		  </div>
 		   <div class="navbar-edit ">	
 		 <!--   NAV BAR LOGO   -->
-		    <a class="navbar-brand" href="#">
-		    	<img  class="img-fluid" src="/img/white_logo.png" width="80px" height="100px" />
+		    <a class="navbar-brand" href="/">
+		    	<img  class="img-fluid logo " src="/img/lifelogo.png" width="60px" height="100px" />
 		    </a>
 		  </div>
 		    <button class="navbar-toggler me-5" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
@@ -43,24 +43,33 @@
 		      <div class="offcanvas-body">
 		        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
 		          <li class="nav-item">
-		            <a class="nav-link active text-dark" aria-current="page" href="/">Home</a>
+		            	<a class="nav-link active text-dark" aria-current="page" href="/">Home</a>
 		          </li>
 		          <li class="nav-item">
-		            <a class="nav-link text-dark" href="/signup">Login</a>
+		          	  <c:if test="${user_id != oneUser.creator.id}">		          	 		          	  
+		           		<a class="nav-link text-dark" href="/alltask">Life Task</a>
+					  </c:if>
 		          </li>
-		          <li class="nav-item dropdown">
-		            <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-		              Dropdown
-		            </a>
-		            <ul class="dropdown-menu dropdown-menu-dark">
-		              <li><a class="dropdown-item text-dark" href="#">Action</a></li>
-		              <li><a class="dropdown-item text-dark" href="#">Another action</a></li>
-		              <li>
-		                <hr class="dropdown-divider">
-		              </li>
-		              <li><a class="dropdown-item text-dark" href="#">Something else here</a></li>
-		            </ul>
+		          <li class="nav-item">
+		          	  <c:if test="${user_id != oneUser.creator.id}">					  
+		           		<a class="nav-link text-dark" href="/dashboard">Dashboard</a>
+					  </c:if>
 		          </li>
+				  <li class="nav-item">
+				  	  <c:if test="${user_id == oneUser.creator.id}">
+		            	<a class="nav-link text-dark" href="/signup">Sign Up</a>
+		              </c:if>
+		          </li>
+		          <li class="nav-item">
+		          	<c:if test="${user_id == oneUser.creator.id}">
+		            	<a class="nav-link text-dark" href="/signin">Sign In</a>
+		             </c:if>
+		          </li>
+			      <li class="nav-item">
+			          <c:if test="${user_id != oneUser.creator.id}">
+				            <a class="nav-link text-dark" href="/logout">Logout</a> 
+					  </c:if>			     
+			      </li>
 		        </ul>
 		      </div>
 		    </div>

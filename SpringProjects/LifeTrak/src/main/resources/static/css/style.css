@@ -179,3 +179,32 @@ h1.heading {
 
 
 
+
+/* COOKIE BOX */
+
+.cookies-eu-banner {
+    background: #0dcbf0;
+    color: #fff;
+    padding: 6px;
+    font-size: 13px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: 10;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+.cookies-eu-banner button:hover {
+    background: #fff;
+    color: #222;
+}
+
+.hidden {
+    display: none;
+}
+
+

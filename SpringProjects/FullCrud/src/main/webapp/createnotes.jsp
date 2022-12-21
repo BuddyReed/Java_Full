@@ -46,7 +46,9 @@
 	<div class="container">	
 			<p class="text-danger"> Author Must Not Be Blank </p>
 			<form:form modelAttribute="bookObj" action="/book/new" method="POST">
-				<!-- <input type="hidden" name="_method" value="put"> -->
+				The input below need to be in the edit window as this allows the POST 
+				method to work properly...
+				<input type="hidden" name="_method" value="put">
 				<!-- modelAttrivute matches @modelAttribute in @Getmapping BookController -->
 				<form:input type="hidden" path="creator" value="${user_id}" />
 				<div class="form-group">

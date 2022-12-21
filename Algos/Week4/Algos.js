@@ -159,6 +159,48 @@ class LinkedQueue{
     dequeue(){
 
     }
+
+        /**
+     * QUEUE MUST BE RETURNED TO IT'S ORIGINAL STATE
+     * You are only allowed to use built-in methods
+     * Use a stack to help solve
+     * 
+     * @returns {boolean} The queue is a palindrome
+     */
+        isPalindrome(){
+        
+
+            isPalindrome(){
+                let flag = true;
+                let thisStack = new Stack;
+                for (let i = 0; i < this.size(); i++) {
+                  let nextUp = this.dequeue();
+                  thisStack.push(nextUp);
+                  this.enqueue(nextUp);
+                }
+                for (let i = 0; i < this.size(); i++) {
+                  let nextUp = this.dequeue();
+                  let stackNextUp = thisStack.pop()
+                  this.enqueue(nextUp);
+                  if (nextUp != stackNextUp) {
+                    flag = false;
+                  }
+                }
+                return flag;
+              }
+        }
+
+
 }
+
+
+
+let test = new Queue()
+test.enqueue('a')
+test.enqueue('b')
+test.enqueue('c')
+test.enqueue('b')
+test.enqueue('a')
+console.log(test.isPalindrome()) // true 
 
 

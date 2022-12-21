@@ -98,7 +98,8 @@
 			              <h2 class="text-uppercase text-center mb-5">Create lifetask</h2>
 			
 			<!-- FORM STARTS HERE -->
-			            <form:form modelAttribute="taskObj" action="/alltask/new" method="POST">
+			            <form:form modelAttribute="taskObj" action="/alltask/${taskObj.id}/edit" method="POST">
+			              <input type="hidden" name="_method" value="put">
 			              <form:input type="hidden" path="creator" value="${user_id}" />
 			                
 			                <div class="form-outline mb-4">

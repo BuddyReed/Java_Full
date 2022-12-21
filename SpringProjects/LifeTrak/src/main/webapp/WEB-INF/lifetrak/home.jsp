@@ -177,7 +177,7 @@
                                     </p>
                                 </div>
                                 <div class="card-read-more">
-                                    <a href="https://codepen.io/wisnust10/full/ZWERZK/" class="btn btn-link btn-block">
+                                    <a href="/signup" class="btn btn-link btn-block">
                                         Subscribe Now
                                     </a>
                                 </div>
@@ -218,6 +218,29 @@
         </div>
 </section>
     
+ 
+ 
+<!--  Cookies Box -->
+
+    <section>
+        <div class="container mt-5">
+            <div class="card col-lg-3 cookies-eu-banner hidden">
+                <div class="card-body bg-info">
+                    <p>
+                    By clicking ”OK”, you agree to the storing of cookies on your device to
+                    enhance site navigation, analyze site usage, and improve marketing. 
+                    </p> 
+                    <button type="button" class="btn btn-light">Accept</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    
+ 
+ 
+ 
  
 
 <!--  Footer -->
@@ -274,6 +297,8 @@
 </section>
 
 <!-- JavaScript Bundle with Popper -->
+	
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="/js/main.js" ></script>
 </body>
 </html>

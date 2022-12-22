@@ -11,7 +11,7 @@ class Stack {
      *    explicitly write 'return' (implicit return).
      */
     constructor() {
-    this.items = [];
+        this.items = [];
     }
 
     /**
@@ -72,7 +72,7 @@ class Stack {
  */
 class Queue {
     constructor() {
-    this.items = [];
+        this.items = [];
     }
 
     /**
@@ -129,66 +129,76 @@ class Queue {
     size() {
         return this.items.length
     }
-    
+
 }
 
 // QUEUE CLASS EXTRA CHALLENGE
-class QueueNode{
-    constructor(data){
+class QueueNode {
+    constructor(data) {
         this.data = data;
         this.next = null;
     }
 }
 
-class LinkedQueue{
-    constructor(){
+class LinkedQueue {
+    constructor() {
         this.head = null;
         this.tail = null;
     }
-    enqueue(data){
+    enqueue(data) {
         // create the node first
         let node1 = new QueueNode(data)
         // check if linkedqueue is empty
-        if(this.head == null && this.tail === null){
+        if (this.head == null && this.tail === null) {
         }
         //
         this.head = node1
-        this.tail = node1 
+        this.tail = node1
     }
 
-    dequeue(){
+    dequeue() {
 
     }
 
-        /**
-     * QUEUE MUST BE RETURNED TO IT'S ORIGINAL STATE
-     * You are only allowed to use built-in methods
-     * Use a stack to help solve
-     * 
-     * @returns {boolean} The queue is a palindrome
-     */
-        isPalindrome(){
-        
-
-            isPalindrome(){
-                let flag = true;
-                let thisStack = new Stack;
-                for (let i = 0; i < this.size(); i++) {
-                  let nextUp = this.dequeue();
-                  thisStack.push(nextUp);
-                  this.enqueue(nextUp);
-                }
-                for (let i = 0; i < this.size(); i++) {
-                  let nextUp = this.dequeue();
-                  let stackNextUp = thisStack.pop()
-                  this.enqueue(nextUp);
-                  if (nextUp != stackNextUp) {
-                    flag = false;
-                  }
-                }
-                return flag;
-              }
+    /**
+ * QUEUE MUST BE RETURNED TO IT'S ORIGINAL STATE
+ * You are only allowed to use built-in methods
+ * Use a stack to help solve
+ * 
+ * @returns {boolean} The queue is a palindrome
+ */
+    isPalindrome() {
+        let flag = true;
+        let thisStack = new Stack;
+        for (let i = 0; i < this.size(); i++) {
+            let nextUp = this.dequeue();
+            thisStack.push(nextUp);
+            this.enqueue(nextUp);
         }
+        for (let i = 0; i < this.size(); i++) {
+            let nextUp = this.dequeue();
+            let stackNextUp = thisStack.pop()
+            this.enqueue(nextUp);
+            if (nextUp != stackNextUp) {
+                flag = false;
+            }
+        }
+        return flag;
+    }
+
+    /**
+     * Determines whether the sum of the left half of the queue items is equal to
+     * the sum of the right half. Avoid indexing the queue items directly via
+     * bracket notation, use the queue methods instead for practice.
+     * Use no extra array or objects.
+     * The queue should be returned to it's original order when done.
+     * - Time: O(?).
+     * - Space: O(?).
+     * @returns {boolean} Whether the sum of the left and right halves is equal.
+     */
+    isSumOfHalvesEqual() {
+
+    }
 
 
 }
@@ -204,3 +214,23 @@ test.enqueue('a')
 console.log(test.isPalindrome()) // true 
 
 
+var q1 = Queue()
+
+q1.enqueue(1)
+q1.enqueue(2)
+q1.enqueue(3)
+q1.enqueue(3)
+q1.enqueue(2)
+q1.enqueue(1)
+
+q1.isSumOfHalvesEqual() // true
+
+
+var q2 = Queue()
+
+q2.enqueue(5)
+q2.enqueue(2)
+q2.enqueue(1)
+q2.enqueue(1)
+
+q2.isSumOfHalvesEqual() // false

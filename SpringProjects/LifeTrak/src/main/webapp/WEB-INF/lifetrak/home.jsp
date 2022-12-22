@@ -105,12 +105,19 @@
 					<div class="col-lg-6 col-sm-12 ">
 						<h3 class="">About LifeTrak:</h3>
 						<p>
-							LifeTrak was start to help indivaul stay on track to finsih their life desirers. 
+							LifeTrak was started to help individual stay  motivated and on track.
 							LifeTrak was start to help indivaul stay on track to finsih their life desirers. 
 							LifeTrak was start to help indivaul stay on track to finsih their life desirers. 
  							
 						
 						</p>
+						<c:if test="${user_id != oneUser.creator.id}">
+						<div class="dashhov">				
+							<a href="/alltask">
+								<img  class="dashhov img-fluid shadow-lg bg-body my-4 " width="" alt="" src="/img/access.png" >				
+							</a>
+						</div>
+						 </c:if>
 					</div>
 					
 					<div class="col-lg-6 col-sm-12 text-center">
@@ -135,29 +142,34 @@
                 <div class="container">
                     <div class="row gy-4">
                         <!-- CARD 1 -->
-                        <div class="col-xs-12 col-sm-4">
-                            <div class="card h-100">
-                                <a class="img-card" href="/signup">
-                                    <img class="" src="/img/homesignup.png" />
-                                </a>
-                                <div class="card-content text-center">
-                                    <h4 class="card-title">
-                                        <a href="/signup">
-                                            Sign Up for LifeTrak Today!
-                                        </a>
-                                    </h4>
-                                    <p class="">
-                                    	Looking for away to keep track of you lifestyle? You found the perfect place.                            
-                                    </p>
-                                </div>
-                                <div class="card-read-more">
-                                    <a href="/signup" class="btn btn-link btn-block">
-                                        Sign Up Today
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                      <c:if test="${user_id == oneUser.creator.id}">		          	 		          	  
+					  
+	                        <div class="col-xs-12 col-sm-4">
+	                            <div class="card h-100">
+	                                <a class="img-card" href="/signup">
+	                                    <img class="" src="/img/homesignup.png" />
+	                                </a>
+	                                <div class="card-content text-center">
+	                                    <h4 class="card-title">
+	                                        <a href="/signup">
+	                                            Sign Up for LifeTrak Today!
+	                                        </a>
+	                                    </h4>
+	                                    <p class="">
+	                                    	Looking for away to keep track of you lifestyle? You found the perfect place.                            
+	                                    </p>
+	                                </div>
+	                                <div class="card-read-more">
+	                                    <a href="/signup" class="btn btn-link btn-block">
+	                                        Sign Up Today
+	                                    </a>
+	                                </div>
+	                            </div>
+	                        </div>
+                        </c:if>
                         <!-- CARD 2  -->
+                        
+                         <c:if test="${user_id == oneUser.creator.id}">
                         <div class="col-xs-12 col-sm-4">
                             <div class="card h-100">
                                 <a class="img-card"
@@ -183,8 +195,9 @@
                                 </div>
                             </div>
                         </div>
-                        
+                       </c:if>
                         <!-- CARD 3  -->
+                         <c:if test="${user_id == oneUser.creator.id}">
                         <div class="col-xs-12 col-sm-4">
                             <div class="card h-100">
                                 <a class="img-card"
@@ -212,6 +225,7 @@
                                 </div>
                             </div>
                         </div>
+                        </c:if>
                     </div>
                 </div>
             </div>
@@ -229,7 +243,7 @@
                     <p>
                     By clicking ”OK”, you agree to the storing of cookies on your device to
                     enhance site navigation, analyze site usage, and improve marketing. 
-                    </p> 
+                    </p>
                     <button type="button" class="btn btn-light">Accept</button>
                 </div>
             </div>

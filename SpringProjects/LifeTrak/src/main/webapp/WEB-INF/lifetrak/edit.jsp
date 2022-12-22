@@ -14,8 +14,10 @@
 <!-- NEW LINKS -->
 <link href = "https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel = "stylesheet">  
 <link rel="stylesheet" type="text/css" href="/css/style.css">
-<script src = "https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js">  
-</script>  
+<script src = "https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"> 
+</script> 
+<!-- Bootstrap icons  -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css"> 
 </head>
 <body>
 
@@ -205,8 +207,13 @@
 										      		<p class="fw-normal mb-1"><c:out value="${task.trakTask}" /></p>						      
 										      </td>
 										      <td>																																																		        
-										        <a class="text-info" href="/alltask/${task.id}/edit">Edit</a>						        							   
-										      	<a class="text-info" href="/alltask/${task.id}/delete">Delete</a>
+										     																																																	        
+											        <a class="text-info ms-2" href="/alltask/${task.id}/edit">
+											        	 <i class="bi bi-pencil-square"></i>
+											        </a>						        							   
+											      	<a class="text-danger ms-2" href="/alltask/${task.id}/delete">
+											      		<i class="bi bi-x-octagon"></i>
+											      	</a>
 										      </td>
 										    </c:if>
 									    </tr>
@@ -245,8 +252,13 @@
 											      		<p class="fw-normal mb-1"><c:out value="${task.trakTask}" /></p>						      
 											      </td>
 											      <td>
-										       		<a class="text-info" href="/alltask/${task.id}/edit">Edit</a>						        							   
-										      		<a class="text-info" href="/alltask/${task.id}/delete">Delete</a>						        							   
+										     																																																	        
+											        <a class="text-info ms-2" href="/alltask/${task.id}/edit">
+											        	 <i class="bi bi-pencil-square"></i>
+											        </a>						        							   
+											      	<a class="text-danger ms-2" href="/alltask/${task.id}/delete">
+											      		<i class="bi bi-x-octagon"></i>
+											      	</a>				        							   
 											      </td>
 											  </c:if>
 										    </tr>
@@ -285,8 +297,13 @@
 											      		<p class="fw-normal mb-1"><c:out value="${task.trakTask}" /></p>						      
 											      </td>
 											      <td>
-										        		<a class="text-info" href="/alltask/${task.id}/edit">Edit</a>						        							   
-										      			<a class="text-info" href="/alltask/${task.id}/delete">Delete</a>							        							   
+										     																																																	        
+												        <a class="text-info ms-2" href="/alltask/${task.id}/edit">
+												        	 <i class="bi bi-pencil-square"></i>
+												        </a>						        							   
+												      	<a class="text-danger ms-2" href="/alltask/${task.id}/delete">
+												      		<i class="bi bi-x-octagon"></i>
+												      	</a>						        							   
 											      </td>
 											  </c:if>
 										    </tr>
@@ -325,8 +342,13 @@
 											      		<p class="fw-normal mb-1"><c:out value="${task.trakTask}" /></p>						      
 											      </td>
 											      <td>
-										        		<a class="text-info" href="/alltask/${task.id}/edit">Edit</a>						        							   
-										      			<a class="text-info" href="/alltask/${task.id}/delete">Delete</a>						        							   
+										     																																																	        
+												        <a class="text-info ms-2" href="/alltask/${task.id}/edit">
+												        	 <i class="bi bi-pencil-square"></i>
+												        </a>						        							   
+												      	<a class="text-danger ms-2" href="/alltask/${task.id}/delete">
+												      		<i class="bi bi-x-octagon"></i>
+												      	</a>					        							   
 											      </td>
 											  </c:if>
 										    </tr>
